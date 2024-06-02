@@ -1,4 +1,4 @@
-import { Builder, Browser } from "selenium-webdriver";
+import { Builder, Browser, By } from "selenium-webdriver";
 
 (async () => {
   const driver = await new Builder().forBrowser(Browser.CHROME).build();
