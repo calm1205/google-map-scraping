@@ -1,7 +1,7 @@
 {
   "type": "module",
   "scripts": {
-    "dev": "node index.js"
+    "dev": "tsx src/index.ts"
   },
   "dependencies": {
     "selenium-webdriver": "^4.21.0"

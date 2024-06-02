@@ -1,6 +1,7 @@
 import { Builder, Browser } from "selenium-webdriver";
 import chrome from "selenium-webdriver/chrome.js";
 import { kamei } from "./sites/kamei.js";
+import { exportTsv } from "./libs/exportTsv/exportTsv.js";
 
 const options = new chrome.Options();
 options.addArguments("--headless=new");
@@ -12,7 +13,9 @@ options.addArguments("--headless=new");
     .build();
 
   try {
-    await kamei(driver);
+    const kameiObject = await kamei(driver);
+
+    exportTsv(kameiObject);
   } catch (error) {
     console.error(error);
   } finally {
