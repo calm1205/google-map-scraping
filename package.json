@@ -4,6 +4,7 @@
     "dev": "node index.js"
   },
   "dependencies": {
-    "selenium-webdriver": "^4.21.0"
+    "selenium-webdriver": "^4.21.0",
+    "typescript": "^5.4.5"
   }
 }
