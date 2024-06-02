@@ -1,4 +1,4 @@
-import { TsvObject } from "./libs/exportTsv/type";
+import { TsvObject } from "./exportTsv/type";
 
 export const dummyData: TsvObject[] = [
   {
