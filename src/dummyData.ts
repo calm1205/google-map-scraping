@@ -1,6 +1,6 @@
-import { CsvObject } from "exportCsv";
+import { TsvObject } from "./libs/exportTsv/type";
 
-export const dummyData: CsvObject = [
+export const dummyData: TsvObject = [
   {
     name: "Alpha Corp",
     address: "1234 Elm Street, Springfield, IL",
