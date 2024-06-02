@@ -1,6 +1,6 @@
 import fs from "node:fs";
 
-export const exportCsv = (input: {}) => {
+export const exportCsv = (input: string) => {
   try {
     fs.writeFileSync("test.csv", input);
     // file written successfully
@@ -8,3 +8,5 @@ export const exportCsv = (input: {}) => {
     console.error(err);
   }
 };
+
+exportCsv("Hello, World!");
