@@ -5,9 +5,9 @@ import { Builder, Browser, By } from "selenium-webdriver";
   try {
     await driver.get("https://fc-kamei.net/BG1");
 
-    const title = await driver.findElement(
-      By.css("#list_header .brand_search_headline")
-    );
+    const title = await driver
+      .findElement(By.css("#main_contents .brand_search_headline"))
+      .getText();
 
     console.log(title);
   } finally {
