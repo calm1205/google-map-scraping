@@ -4,7 +4,7 @@ import { object2String } from "./object2String";
 
 const OUTPUT_FILE_NAME = "output.tsv";
 
-export const exportTsv = (input: TsvObject) => {
+export const exportTsv = (input: TsvObject[]) => {
   const csvString = object2String(input);
 
   try {
