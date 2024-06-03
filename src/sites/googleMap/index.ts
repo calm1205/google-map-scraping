@@ -8,6 +8,7 @@ const SEARCH_WORD = "企業";
 
 export const googleMap = async (driver: WebDriver) => {
   await driver.get(URL);
+  console.log(`${URL}にアクセス\n`);
   await sleep(1000);
 
   await searchWord(driver, SEARCH_WORD);
@@ -15,4 +16,5 @@ export const googleMap = async (driver: WebDriver) => {
   const companyNames = await getSearchResult(driver, SEARCH_WORD);
 
   console.log(companyNames);
+  console.log(`${URL}のスクレイピング完了\n`);
 };

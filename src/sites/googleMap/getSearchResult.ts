@@ -1,4 +1,4 @@
-import { By, WebDriver } from "selenium-webdriver";
+import { By, Key, WebDriver } from "selenium-webdriver";
 import { sleep } from "../../libs/sleep/sleep";
 
 export const getSearchResult = async (driver: WebDriver, word: string) => {
@@ -10,15 +10,44 @@ export const getSearchResult = async (driver: WebDriver, word: string) => {
 
   const companyNames = [];
 
+  let index = 0;
   for (const searchResult of searchResults) {
-    await searchResult.click();
+    if (index === 0) {
+      await searchResult.click();
+      await sleep(1000);
+      await searchResult.click();
+    } else {
+      await focusNext(driver);
+    }
 
     await sleep(1000);
 
-    const company = await driver.findElement(By.css("div[role='main'"));
-    const companyName = await company.findElement(By.css("h1")).getText();
+    const companyName = await driver
+      .findElement(By.css("h1.DUwDvf.lfPIob"))
+      .getText();
     companyNames.push(companyName);
+    index++;
   }
 
   return companyNames;
+};
+
+const focusNext = async (driver: WebDriver) => {
+  await driver
+    .actions({ async: true, bridge: undefined })
+    .keyDown(Key.TAB)
+    .perform();
+  await driver
+    .actions({ async: true, bridge: undefined })
+    .keyDown(Key.TAB)
+    .perform();
+  await driver
+    .actions({ async: true, bridge: undefined })
+    .keyDown(Key.TAB)
+    .perform();
+
+  await driver
+    .actions({ async: true, bridge: undefined })
+    .keyDown(Key.ENTER)
+    .perform();
 };
