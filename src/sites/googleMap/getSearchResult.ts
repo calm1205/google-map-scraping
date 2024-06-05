@@ -1,53 +1,34 @@
-import { By, Key, WebDriver } from "selenium-webdriver";
-import { sleep } from "../../libs/sleep/sleep";
+import { By, WebDriver } from "selenium-webdriver";
+import { sleep } from "@/src/libs";
+import { focusNextResult, getTargetInfo, focusFirstResult } from "./libs";
 
 export const getSearchResult = async (driver: WebDriver, word: string) => {
-  const searchResult = await driver.findElement(
+  const searchResultWrapper = await driver.findElement(
     By.css(`[aria-label='「${word}」の検索結果']`)
   );
 
-  const searchResults = await searchResult.findElements(By.css(".hfpxzc"));
+  console.log("検索結果を取得中...");
+
+  await focusFirstResult(
+    await searchResultWrapper.findElements(By.css(".hfpxzc"))
+  );
 
   const companyNames = [];
 
-  let index = 0;
-  for (const searchResult of searchResults) {
-    if (index === 0) {
-      await searchResult.click();
-      await sleep(1000);
-      await searchResult.click();
-    } else {
-      await focusNext(driver);
-    }
+  while (true) {
+    const companyName = await getTargetInfo(driver);
+    console.log(companyName);
+    companyNames.push(companyName);
 
     await sleep(1000);
+    await focusNextResult(driver);
+    await sleep(1000);
 
-    const companyName = await driver
-      .findElement(By.css("h1.DUwDvf.lfPIob"))
-      .getText();
-    companyNames.push(companyName);
-    index++;
+    const focusedDom = await driver.switchTo().activeElement();
+    const className = await focusedDom.getAttribute("class");
+    const isBottom = className === "D6NGZc";
+    if (isBottom) break;
   }
 
   return companyNames;
-};
-
-const focusNext = async (driver: WebDriver) => {
-  await driver
-    .actions({ async: true, bridge: undefined })
-    .keyDown(Key.TAB)
-    .perform();
-  await driver
-    .actions({ async: true, bridge: undefined })
-    .keyDown(Key.TAB)
-    .perform();
-  await driver
-    .actions({ async: true, bridge: undefined })
-    .keyDown(Key.TAB)
-    .perform();
-
-  await driver
-    .actions({ async: true, bridge: undefined })
-    .keyDown(Key.ENTER)
-    .perform();
 };
