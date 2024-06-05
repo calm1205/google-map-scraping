@@ -1,7 +1,7 @@
 import { WebDriver } from "selenium-webdriver";
-import { sleep } from "../../libs/sleep/sleep";
-import { searchWord } from "./searchWord";
-import { getSearchResult } from "./getSearchResult";
+import { sleep } from "@/src/libs";
+import { searchWord } from "./libs/searchWord";
+import { getSearchResult } from "./libs/getSearchResult";
 
 const URL = "https://www.google.com/maps/";
 const SEARCH_WORD = "企業";

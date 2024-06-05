@@ -1,6 +1,9 @@
 import { By, WebDriver } from "selenium-webdriver";
-import { sleep } from "../../libs/sleep/sleep";
+import { sleep } from "@/src/libs";
 
+/**
+ * wordで検索
+ */
 export const searchWord = async (driver: WebDriver, word: string) => {
   console.log(`"${word}"を検索中...`);
   const searchBox = await driver

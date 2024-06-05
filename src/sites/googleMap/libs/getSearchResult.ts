@@ -1,6 +1,6 @@
 import { By, WebDriver } from "selenium-webdriver";
 import { sleep } from "@/src/libs";
-import { focusNextResult, getTargetInfo, focusFirstResult } from "./libs";
+import { focusNextResult, getTargetInfo, focusFirstResult } from ".";
 
 export const getSearchResult = async (driver: WebDriver, word: string) => {
   const searchResultWrapper = await driver.findElement(
