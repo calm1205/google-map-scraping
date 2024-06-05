@@ -13,12 +13,12 @@ export const getSearchResult = async (driver: WebDriver, word: string) => {
     await searchResultWrapper.findElements(By.css(".hfpxzc"))
   );
 
-  const companyNames = [];
+  const companyInfoArray = [];
 
   while (true) {
-    const companyName = await getTargetInfo(driver);
-    console.log(companyName);
-    companyNames.push(companyName);
+    const companyInfo = await getTargetInfo(driver);
+    console.log(companyInfo.name);
+    companyInfoArray.push(companyInfo);
 
     await sleep(1000);
     await focusNextResult(driver);
@@ -30,5 +30,5 @@ export const getSearchResult = async (driver: WebDriver, word: string) => {
     if (isBottom) break;
   }
 
-  return companyNames;
+  return companyInfoArray;
 };

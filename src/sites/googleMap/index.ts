@@ -13,8 +13,8 @@ export const googleMap = async (driver: WebDriver) => {
 
   await searchWord(driver, SEARCH_WORD);
   await sleep(2000);
-  const companyNames = await getSearchResult(driver, SEARCH_WORD);
+  const companyInfoArray = await getSearchResult(driver, SEARCH_WORD);
 
-  console.log(companyNames);
   console.log(`${URL}のスクレイピング完了`);
+  return companyInfoArray;
 };

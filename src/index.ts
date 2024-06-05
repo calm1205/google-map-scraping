@@ -14,10 +14,9 @@ const options = new chrome.Options();
     .build();
 
   try {
-    // const kameiObject = await kamei(driver);
-    await googleMap(driver);
+    const googleMapInfo = await googleMap(driver);
 
-    // exportTsv(kameiObject);
+    exportTsv(googleMapInfo);
   } catch (error) {
     console.error(error);
   } finally {
