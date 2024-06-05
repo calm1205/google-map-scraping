@@ -2,7 +2,7 @@ import { By, WebDriver } from "selenium-webdriver";
 import { sleep } from "@/src/libs";
 import { focusNextResult, getTargetInfo, focusFirstResult } from ".";
 
-const MAX_RESULT = 10;
+const MAX_RESULT = 3;
 
 /**
  * wordで検索した結果を取得

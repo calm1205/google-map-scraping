@@ -13,13 +13,13 @@ export const getTargetInfo = async (driver: WebDriver): Promise<TsvObject> => {
   let phoneNumber = "";
   for (const resultElement of resultElements) {
     const ariaLabel = await resultElement.getAttribute("aria-label");
+    const innerText = (await resultElement.getText())
+      .replaceAll("", "")
+      .replaceAll("", "")
+      .trim();
 
-    if (ariaLabel.includes("住所")) {
-      address = await resultElement.getText();
-    }
-    if (ariaLabel.includes("電話番号")) {
-      phoneNumber = await resultElement.getText();
-    }
+    if (ariaLabel.includes("住所")) address = innerText;
+    if (ariaLabel.includes("電話番号")) phoneNumber = innerText;
   }
 
   return {
