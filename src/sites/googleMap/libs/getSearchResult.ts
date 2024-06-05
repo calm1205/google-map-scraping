@@ -2,6 +2,11 @@ import { By, WebDriver } from "selenium-webdriver";
 import { sleep } from "@/src/libs";
 import { focusNextResult, getTargetInfo, focusFirstResult } from ".";
 
+const MAX_RESULT = 10;
+
+/**
+ * wordで検索した結果を取得
+ */
 export const getSearchResult = async (driver: WebDriver, word: string) => {
   const searchResultWrapper = await driver.findElement(
     By.css(`[aria-label='「${word}」の検索結果']`)
@@ -15,7 +20,8 @@ export const getSearchResult = async (driver: WebDriver, word: string) => {
 
   const companyInfoArray = [];
 
-  while (true) {
+  let count = 0;
+  while (count < MAX_RESULT) {
     const companyInfo = await getTargetInfo(driver);
     console.log(companyInfo.name);
     companyInfoArray.push(companyInfo);
@@ -24,6 +30,7 @@ export const getSearchResult = async (driver: WebDriver, word: string) => {
     await focusNextResult(driver);
     await sleep(1000);
 
+    count++;
     const focusedDom = await driver.switchTo().activeElement();
     const className = await focusedDom.getAttribute("class");
     const isBottom = className === "D6NGZc";
