@@ -1,4 +1,8 @@
 node_modules
+
+# トランスパイル後のファイルを無視
+dist
+
 .DS_Store
 
 *.tsv
