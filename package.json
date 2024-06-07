@@ -1,9 +1,10 @@
 {
   "type": "module",
-  "main": "src/main.js",
+  "main": "dist/main.js",
   "scripts": {
     "dev": "tsx src/index.ts",
-    "electron": "electron ."
+    "build": "tsc",
+    "electron": "npm run build && electron ."
   },
   "dependencies": {
     "selenium-webdriver": "^4.21.0"
