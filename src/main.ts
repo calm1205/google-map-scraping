@@ -10,6 +10,6 @@ const createWindow = () => {
   window.loadFile("dist/index.html");
 };
 
-app.whenReady().then(createWindow);
+app.on("ready", () => createWindow());
 
-console.log("hello electron!");
+console.log("start electron!");
