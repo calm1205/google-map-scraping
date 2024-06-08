@@ -1,12 +1,19 @@
 {
+  "name": "web-scraping",
+  "version": "1.0.0",
+  "productName": "web-scraping",
   "type": "module",
   "main": "dist/main.js",
   "scripts": {
     "dev": "tsx src/index.ts",
     "build": "tsc && cp src/index.html dist/index.html",
-    "electron": "npm run build && electron ."
+    "electron": "npm run build && electron .",
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
   },
   "dependencies": {
+    "electron-squirrel-startup": "^1.0.1",
     "selenium-webdriver": "^4.21.0"
   },
   "devDependencies": {
