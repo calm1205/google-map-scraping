@@ -1,6 +1,6 @@
-## setup
+# web-scraping
 
-### start
+## start
 
 ```bash
 $ npm run start
@@ -10,7 +10,9 @@ $ npm run start
 
 終了時は `Ctrl + C` で終了（electron のブラウザを閉じても同期が続く）
 
-### build
+<br/><br/>
+
+## build
 
 ```bash
 $ npm run make
