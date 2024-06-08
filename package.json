@@ -8,8 +8,8 @@
     "dev": "tsx src/index.ts",
     "build": "tsc && cp src/index.html dist/index.html",
     "build:sync": "concurrently 'tsc --watch' './scripts/sync-index-html.sh'",
-    "electron": "npm run build:sync && electron .",
-    "start": "electron-forge start",
+    "electron": "concurrently 'npm run build:sync' 'electron .'",
+    "start": "concurrently 'npm run build:sync' 'electron-forge start'",
     "package": "electron-forge package",
     "make": "electron-forge make"
   },
