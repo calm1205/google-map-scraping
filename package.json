@@ -2,8 +2,10 @@
   "name": "web-scraping",
   "version": "1.0.0",
   "productName": "web-scraping",
+  "description": "web scraping with electron",
   "type": "module",
   "main": "dist/main.js",
+  "author": "calm1205",
   "scripts": {
     "dev": "tsx src/index.ts",
     "build": "tsc && cp src/index.html dist/index.html",
