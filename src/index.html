@@ -4,32 +4,41 @@
     <meta charset="UTF-8" />
     <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
+      content="default-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; script-src 'self'"
     />
     <meta
       http-equiv="X-Content-Security-Policy"
-      content="default-src 'self'; script-src 'self'"
+      content="default-src 'self' https://fonts.googleapis.com https://fonts.gstatic.com; script-src 'self'"
     />
     <title>web-scraping</title>
     <link href="./output.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
+    />
   </head>
 
   <body>
-    <section class="flex flex-col p-10 gap-4">
-      <h1 class="text-2xl font-bold">Web Scraping</h1>
+    <header class="p-4">
+      <h1 class="text-2xl font-semibold">Web Scraping</h1>
+    </header>
 
-      <input
-        type="text"
-        placeholder="検索したいキーワードを入力..."
-        class="text-gray-600 mt-4 border border-gray-200 rounded px-8 py-4 focus:outline-sky-400 hover:outline-sky-400"
-      />
+    <main class="flex flex-col gap-4">
+      <section class="h-80">
+        <input
+          type="text"
+          placeholder="検索したいキーワードを入力..."
+          class="text-gray-600 text-sm mt-4 border-0 border-b border-gray-200 px-4 py-1 outline-0 focus:border-sky-400 hover:border-sky-400"
+        />
+        <span class="material-symbols-outlined"> search </span>
 
-      <div class="text-sm text-slate-800">
-        <p>「地域x 業種y 企業」のような検索キーワードがおすすめです。</p>
-        <p>例: 「東京都 飲食店 企業」</p>
-        <br />
-        <p>1秒間に1件取得できるパフォーマンスを想定しています。</p>
-      </div>
+        <div class="text-sm text-slate-800">
+          <p>「地域x 業種y 企業」のような検索キーワードがおすすめです。</p>
+          <p>例: 「東京都 飲食店 企業」</p>
+          <br />
+          <p>1秒間に1件取得できるパフォーマンスを想定しています。</p>
+        </div>
+      </section>
 
       <div class="flex gap-4 mt-4">
         <button
@@ -42,7 +51,7 @@
         </button>
       </div>
       <div id="app"></div>
-    </section>
+    </main>
     <script src="renderer/index.js"></script>
   </body>
 </html>
