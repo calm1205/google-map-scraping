@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "tsx src/index.ts",
     "build": "tsc && ./scripts/copy-view.sh",
-    "tailwind": "npx tailwindcss -i src/input.css -o dist/output.css",
+    "tailwind": "npx tailwindcss -i src/input.css -o dist/output.css --watch",
     "build:sync": "concurrently 'tsc --watch' './scripts/sync-index-html.sh' 'npm run tailwind'",
     "electron": "concurrently 'npm run build:sync' 'electron .'",
     "start": "concurrently 'npm run build:sync' 'electron-forge start'",
