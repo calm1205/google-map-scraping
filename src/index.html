@@ -23,16 +23,24 @@
       <h1 class="text-2xl font-semibold">Web Scraping</h1>
     </header>
 
-    <main class="flex flex-col gap-4">
-      <section class="h-80">
-        <input
-          type="text"
-          placeholder="検索したいキーワードを入力..."
-          class="text-gray-600 text-sm mt-4 border-0 border-b border-gray-200 px-4 py-1 outline-0 focus:border-sky-400 hover:border-sky-400"
-        />
-        <span class="material-symbols-outlined"> search </span>
+    <main class="flex flex-col items-center gap-4">
+      <section class="h-80 w-3/4 flex flex-col justify-center gap-4">
+        <div class="flex items-center gap-4">
+          <input
+            type="text"
+            placeholder="検索したいキーワードを入力..."
+            class="text-gray-600 w-full text-sm mt-4 border-0 border-b border-gray-200 px-4 py-1 outline-0 focus:border-sky-400 hover:border-sky-400"
+          />
 
-        <div class="text-sm text-slate-800">
+          <button
+            class="flex items-center bg-slate-800 text-white p-2 rounded-full text-sm"
+          >
+            <span class="material-symbols-outlined"> search </span>
+            <span> Search </span>
+          </button>
+        </div>
+
+        <div class="text-xs text-slate-800">
           <p>「地域x 業種y 企業」のような検索キーワードがおすすめです。</p>
           <p>例: 「東京都 飲食店 企業」</p>
           <br />
@@ -40,14 +48,58 @@
         </div>
       </section>
 
+      <section class="max-h-80 w-3/4">
+        <ul class="flex flex-col gap-4 overflow-y-scroll">
+          <li class="flex">
+            <p class="w-8">1.</p>
+            <div>
+              <p class="font-bold">Google japan</p>
+              <p class="text-gray-400 text-sm">
+                東京都品川区西五反田3-9-12シャンボール五反田901
+              </p>
+              <p class="text-gray-400 text-sm">09088589514</p>
+            </div>
+          </li>
+          <li class="flex">
+            <p class="w-8">1.</p>
+            <div>
+              <p class="font-bold">Google japan</p>
+              <p class="text-gray-400 text-sm">
+                東京都品川区西五反田3-9-12シャンボール五反田901
+              </p>
+              <p class="text-gray-400 text-sm">09088589514</p>
+            </div>
+          </li>
+          <li class="flex">
+            <p class="w-8">1.</p>
+            <div>
+              <p class="font-bold">Google japan</p>
+              <p class="text-gray-400 text-sm">
+                東京都品川区西五反田3-9-12シャンボール五反田901
+              </p>
+              <p class="text-gray-400 text-sm">09088589514</p>
+            </div>
+          </li>
+          <li class="flex">
+            <p class="w-8">1.</p>
+            <div>
+              <p class="font-bold">Google japan</p>
+              <p class="text-gray-400 text-sm">
+                東京都品川区西五反田3-9-12シャンボール五反田901
+              </p>
+              <p class="text-gray-400 text-sm">09088589514</p>
+            </div>
+          </li>
+        </ul>
+      </section>
       <div class="flex gap-4 mt-4">
         <button
           class="w-full p-4 rounded border text-slate-800 border-slate-800"
         >
           stop
         </button>
-        <button class="text-white w-full bg-slate-800 p-4 rounded">
-          start
+        <button class="text-white w-full bg-slate-800 py-1 px-2 rounded">
+          Export
         </button>
       </div>
       <div id="app"></div>
