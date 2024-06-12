@@ -6,6 +6,7 @@ html {
   color: rgb(30, 41, 59);
 }
 
+/* ====== loader ====== */
 .loader,
 .loader:before,
 .loader:after {
@@ -19,7 +20,7 @@ html {
 }
 .loader {
   color: rgb(30, 41, 59);
-  font-size: 8px;
+  font-size: 4px;
   position: relative;
   text-indent: -9999em;
   -webkit-transform: translateZ(0);
