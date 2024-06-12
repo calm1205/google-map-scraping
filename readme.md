@@ -25,3 +25,5 @@ $ npm run make
 ```
 
 `electron-forge make`で`out/make`ディレクトリにアプリケーションをビルドして出力する
+
+ref: https://projects.lukehaas.me/css-loaders/
