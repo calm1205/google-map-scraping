@@ -1,5 +1,5 @@
 import { By, WebDriver } from "selenium-webdriver";
-import { sleep } from "@/src/libs";
+import { sleep } from "@/libs";
 
 /**
  * wordで検索

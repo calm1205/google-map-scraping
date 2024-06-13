@@ -1,4 +1,4 @@
-import { keyDown } from "@/src/libs";
+import { keyDown } from "@/libs";
 import { By, Key, WebDriver } from "selenium-webdriver";
 
 export const focusNextResult = async (driver: WebDriver) => {

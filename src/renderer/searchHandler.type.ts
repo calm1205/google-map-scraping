@@ -13,4 +13,5 @@ export type SearchHandler = {
   startSearch: () => void;
   stopSearch: () => void;
   export: () => void;
+  scraping: (word: string, stop: boolean) => void;
 };

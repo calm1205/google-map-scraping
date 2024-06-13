@@ -1,4 +1,4 @@
-import { TsvObject } from "@/src/libs/exportTsv/type";
+import { TsvObject } from "@/libs/exportTsv/type";
 import { By, WebDriver } from "selenium-webdriver";
 
 /**

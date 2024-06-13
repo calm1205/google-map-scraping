@@ -1,5 +1,6 @@
-import { searchHandler } from "./searchHandler.js";
+import { searchHandler } from "./searchHandler";
 
 document.addEventListener("DOMContentLoaded", () => {
+  console.log("start renderer!");
   searchHandler.init();
 });

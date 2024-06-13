@@ -1,4 +1,6 @@
 import { SearchHandler } from "./searchHandler.type";
+import { scraping } from "../index";
+import { ipcRenderer } from "electron";
 
 /**
  * 検索時の処理
@@ -43,6 +45,12 @@ export const searchHandler: SearchHandler = {
       if (this.dom.stopButton) this.dom.stopButton.style.display = "flex";
       if (this.dom.exportButton) this.dom.exportButton.style.display = "none";
       this.isExportable = false;
+
+      ipcRenderer.invoke(
+        "run-node-code",
+        this.scraping(this.inputWord, this.isSearching),
+      );
+      // this.scraping(this.inputWord, this.isSearching);
     });
   },
 
@@ -57,6 +65,7 @@ export const searchHandler: SearchHandler = {
       if (this.dom.loader) this.dom.loader.style.display = "none";
       if (this.dom.stopButton) this.dom.stopButton.style.display = "none";
       if (this.dom.exportButton) this.dom.exportButton.style.display = "block";
+      this.isSearching = false;
       this.isExportable = true;
     });
   },
@@ -68,5 +77,12 @@ export const searchHandler: SearchHandler = {
     this.dom.exportButton?.addEventListener("click", () => {
       console.log("export");
     });
+  },
+
+  /**
+   * スクレイピング
+   */
+  async scraping(word, stop) {
+    await scraping(word, stop);
   },
 };

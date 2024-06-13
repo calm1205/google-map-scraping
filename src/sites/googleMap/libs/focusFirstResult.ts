@@ -1,4 +1,4 @@
-import { sleep } from "@/src/libs";
+import { sleep } from "@/libs";
 import { WebElement } from "selenium-webdriver";
 
 /**

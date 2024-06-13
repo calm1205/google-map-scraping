@@ -9,10 +9,10 @@
     "skipLibCheck": true,
     "baseUrl": "./",
     "paths": {
-      "@/*": ["*"]
+      "@/*": ["src/*"]
     },
     "outDir": "./dist"
   },
-  "include": ["**/*.ts"],
+  "include": ["**/*.ts", "src/renderer/index.ts"],
   "exclude": ["node_modules"]
 }
