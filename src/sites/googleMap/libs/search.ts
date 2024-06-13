@@ -4,7 +4,7 @@ import { sleep } from "@/src/libs";
 /**
  * wordで検索
  */
-export const searchWord = async (driver: WebDriver, word: string) => {
+export const search = async (driver: WebDriver, word: string) => {
   console.log(`"${word}"を検索中...`);
   const searchBox = await driver
     .findElement(By.id("searchbox"))
@@ -14,7 +14,7 @@ export const searchWord = async (driver: WebDriver, word: string) => {
   await sleep(1000);
 
   const searchButton = await driver.findElement(
-    By.id("searchbox-searchbutton")
+    By.id("searchbox-searchbutton"),
   );
   await searchButton.click();
 };

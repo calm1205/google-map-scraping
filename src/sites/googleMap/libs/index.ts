@@ -1,5 +1,5 @@
 export { focusNextResult } from "./focusNextResult";
 export { getTargetInfo } from "./getTargetInfo";
 export { focusFirstResult } from "./focusFirstResult";
-export { searchWord } from "./searchWord";
+export { search } from "./search";
 export { getSearchResult } from "./getSearchResult";

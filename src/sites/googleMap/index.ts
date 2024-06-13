@@ -1,19 +1,19 @@
 import { WebDriver } from "selenium-webdriver";
 import { sleep } from "@/src/libs";
-import { searchWord } from "./libs/searchWord";
-import { getSearchResult } from "./libs/getSearchResult";
+import { search, getSearchResult } from "./libs";
 
 const URL = "https://www.google.com/maps/";
-const SEARCH_WORD = "企業";
 
-export const googleMap = async (driver: WebDriver) => {
+export const googleMap = async (driver: WebDriver, word: string) => {
+  if (!word) console.error("検索ワードが入力されていません");
+
   await driver.get(URL);
   console.log(`${URL}にアクセス`);
   await sleep(1000);
 
-  await searchWord(driver, SEARCH_WORD);
+  await search(driver, word);
   await sleep(2000);
-  const companyInfoArray = await getSearchResult(driver, SEARCH_WORD);
+  const companyInfoArray = await getSearchResult(driver, word);
 
   console.log(`${URL}のスクレイピング完了`);
   return companyInfoArray;
