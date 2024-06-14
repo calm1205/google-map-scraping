@@ -26,4 +26,14 @@ $ npm run make
 
 `electron-forge make`で`out/make`ディレクトリにアプリケーションをビルドして出力する
 
-ref: https://projects.lukehaas.me/css-loaders/
+<br/><br/>
+
+## 構成
+
+- src
+  - main
+    - electronのメインプロセス
+    - node.jsのライブラリ実行（puppetterによるスクレイピング）
+  - renderer
+    - electronのレンダラプロセス
+    - dom操作
