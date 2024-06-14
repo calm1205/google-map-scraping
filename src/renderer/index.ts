@@ -1,4 +1,4 @@
-import { searchHandler } from "./searchHandler";
+import { searchHandler } from "./searchHandler.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   console.log("start renderer!");

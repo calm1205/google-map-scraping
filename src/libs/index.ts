@@ -1,2 +1,2 @@
-export { keyDown } from "@/libs/keyDown";
-export { sleep } from "@/libs/sleep/sleep";
+export { keyDown } from "./keyDown.js";
+export { sleep } from "./sleep/sleep.js";

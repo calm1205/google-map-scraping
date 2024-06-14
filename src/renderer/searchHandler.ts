@@ -1,5 +1,6 @@
 import { SearchHandler } from "./searchHandler.type";
-import { scraping } from "../index";
+// import { scraping } from "../index";
+// import { googleMap } from "../sites/puppeteer/googleMap";
 import { ipcRenderer } from "electron";
 
 /**
@@ -48,7 +49,7 @@ export const searchHandler: SearchHandler = {
 
       (window as any).versions.scraping();
 
-      // this.scraping(this.inputWord, this.isSearching);
+      this.scraping(this.inputWord, this.isSearching);
     });
   },
 
@@ -81,6 +82,7 @@ export const searchHandler: SearchHandler = {
    * スクレイピング
    */
   async scraping(word, stop) {
-    await scraping(word, stop);
+    // await scraping(word, stop);
+    // await googleMap();
   },
 };
