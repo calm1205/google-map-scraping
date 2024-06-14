@@ -23,7 +23,6 @@ export default defineConfig({
         assetFileNames: "assets/[name][extname]",
         chunkFileNames: "assets/[name].js",
         manualChunks: function (id) {
-          // スタイルシートは読み込み順がナイーブなので1ファイルに纏めます
           if (id.includes(".css")) return "style";
 
           // node_modules以下でサイズが大きいものは切り出し
