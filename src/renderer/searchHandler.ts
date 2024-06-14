@@ -46,10 +46,8 @@ export const searchHandler: SearchHandler = {
       if (this.dom.exportButton) this.dom.exportButton.style.display = "none";
       this.isExportable = false;
 
-      ipcRenderer.invoke(
-        "run-node-code",
-        this.scraping(this.inputWord, this.isSearching),
-      );
+      (window as any).versions.scraping();
+
       // this.scraping(this.inputWord, this.isSearching);
     });
   },
