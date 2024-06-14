@@ -1,11 +1,8 @@
-import { WebDriver } from "selenium-webdriver";
+import { KeyInput, Page } from "puppeteer";
 
 /**
  * キーを押下
  */
-export const keyDown = async (driver: WebDriver, key: string) => {
-  await driver
-    .actions({ async: true, bridge: undefined })
-    .keyDown(key)
-    .perform();
+export const keyDown = async (page: Page, key: KeyInput) => {
+  await page.keyboard.down(key);
 };

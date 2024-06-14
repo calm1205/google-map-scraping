@@ -4,6 +4,7 @@ const headerObject: TsvObject = {
   name: "",
   address: "",
   phoneNumber: "",
+  webSite: "",
 };
 const headerString = Object.keys(headerObject).join("\t") + "\n";
 

@@ -1,7 +1,7 @@
 import { app, BrowserWindow, ipcMain } from "electron";
 import * as path from "node:path";
 import { fileURLToPath } from "url";
-import { googleMap } from "./puppeteer/googleMap.js";
+import { scraping } from "./sites/googleMap/index.js";
 
 const createWindow = () => {
   const __filename = fileURLToPath(import.meta.url);
@@ -20,7 +20,10 @@ const createWindow = () => {
 };
 
 app.on("ready", () => {
-  ipcMain.handle("scraping", async () => await googleMap());
+  ipcMain.handle(
+    "scraping",
+    async () => await scraping({ keyword: "株式会社" }),
+  );
   createWindow();
 });
 
