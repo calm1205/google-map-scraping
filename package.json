@@ -7,10 +7,10 @@
   "main": "dist/main.js",
   "author": "calm1205",
   "scripts": {
-    "dev": "tsx src/index.ts",
-    "build": "tsc && tsc-alias && ./scripts/copy-view.sh",
+    "transpile": "tsc -w && tsc-alias",
+    "view:sync": "concurrently './scripts/copy-view.sh' './scripts/sync-index-html.sh'",
     "tailwind": "tailwindcss -i src/input.css -o dist/output.css --watch",
-    "build:sync": "concurrently 'tsc --watch' 'tsc-alias' './scripts/copy-view.sh' './scripts/sync-index-html.sh' 'npm run tailwind'",
+    "build:sync": "concurrently 'npm run transpile' 'npm run view:sync' 'npm run tailwind'",
     "electron": "concurrently 'npm run build:sync' 'electron .'",
     "start": "concurrently 'npm run build:sync' 'electron-forge start'",
     "package": "electron-forge package",
