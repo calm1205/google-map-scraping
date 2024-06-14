@@ -1,2 +1,2 @@
 export { keyDown } from "./keyDown.js";
-export { sleep } from "./sleep/sleep.js";
+export { sleep } from "./sleep.js";

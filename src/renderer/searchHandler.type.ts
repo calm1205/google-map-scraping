@@ -1,3 +1,5 @@
+import { ScrapingArgs } from "@/main/sites/googleMap";
+
 export type SearchHandler = {
   inputWord: string;
   isSearching: boolean;
@@ -13,5 +15,5 @@ export type SearchHandler = {
   startSearch: () => void;
   stopSearch: () => void;
   export: () => void;
-  scraping: (word: string, stop: boolean) => void;
+  scraping: (args: ScrapingArgs) => any;
 };

@@ -1,3 +1,4 @@
+import { ScrapingArgs } from "../main/sites/googleMap";
 import { SearchHandler } from "./searchHandler.type";
 // import { scraping } from "../index";
 // import { googleMap } from "../sites/puppeteer/googleMap";
@@ -37,7 +38,7 @@ export const searchHandler: SearchHandler = {
    * 検索時の処理
    */
   startSearch() {
-    this.dom.searchButton?.addEventListener("click", () => {
+    this.dom.searchButton?.addEventListener("click", async () => {
       this.inputWord = this.dom.input?.value ?? "";
       this.isSearching = true;
 
@@ -47,9 +48,11 @@ export const searchHandler: SearchHandler = {
       if (this.dom.exportButton) this.dom.exportButton.style.display = "none";
       this.isExportable = false;
 
-      (window as any).versions.scraping();
-
-      this.scraping(this.inputWord, this.isSearching);
+      const companyInfo = await this.scraping({
+        keyword: this.inputWord,
+        maxCount: 3,
+      });
+      console.log(companyInfo);
     });
   },
 
@@ -81,8 +84,11 @@ export const searchHandler: SearchHandler = {
   /**
    * スクレイピング
    */
-  async scraping(word, stop) {
-    // await scraping(word, stop);
-    // await googleMap();
+  async scraping({ keyword, maxCount }) {
+    const companyInfo = await (window as any).electronAPI.scraping({
+      keyword,
+      maxCount,
+    });
+    return companyInfo;
   },
 };

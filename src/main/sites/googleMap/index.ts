@@ -4,7 +4,7 @@ import { startSearch } from "./libs/startSearch.js";
 import { getSearchResult } from "./libs/getSearchResult.js";
 
 const URL = "https://www.google.com/maps/";
-type ScrapingArgs = {
+export type ScrapingArgs = {
   keyword: string;
   maxCount?: number;
 };
@@ -31,4 +31,4 @@ export const scraping = async ({ keyword, maxCount = 3 }: ScrapingArgs) => {
   return companyInfoArray;
 };
 
-scraping({ keyword: "株式会社" });
+// scraping({ keyword: "株式会社" });
