@@ -1,6 +1,6 @@
 import { Page } from "puppeteer";
 import { focusFirstResult } from "./focusFirstResult.js";
-import { sleep } from "../../../libs/index.js";
+import { sleep } from "@/main/libs/index.js";
 import { getTargetInfo } from "./getTargetInfo.js";
 import { focusNextResult } from "./focusNextResult.js";
 

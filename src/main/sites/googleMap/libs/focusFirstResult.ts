@@ -1,5 +1,5 @@
-import { sleep } from "../../../libs/index.js";
-import { ElementHandle, Page } from "puppeteer";
+import { sleep } from "@/main/libs/index.js";
+import { ElementHandle } from "puppeteer";
 
 /**
  * 複数の検索結果の中で最初のものをクリック（フォーカス）

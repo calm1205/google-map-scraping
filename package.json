@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "productName": "web-scraping",
   "description": "web scraping with electron",
-  "type": "module",
+  "type": "commonjs",
   "main": "dist/main/main.js",
   "author": "calm1205",
   "scripts": {

@@ -1,4 +1,3 @@
-import { ScrapingArgs } from "../main/sites/googleMap/index";
 const { contextBridge, ipcRenderer } = require("electron");
 
 export const apis = {
@@ -6,5 +5,5 @@ export const apis = {
 };
 
 contextBridge.exposeInMainWorld("electronAPI", {
-  scraping: (args: ScrapingArgs) => ipcRenderer.invoke(apis.scraping, args),
+  scraping: (args: any) => ipcRenderer.invoke(apis.scraping, args),
 });

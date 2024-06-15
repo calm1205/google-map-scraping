@@ -1,8 +1,8 @@
 import { app, BrowserWindow, ipcMain } from "electron";
 import * as path from "node:path";
 import { fileURLToPath } from "url";
-import { scraping } from "./sites/googleMap/index.js";
-import { apis } from "./preload.js";
+import { scraping } from "@/main/sites/googleMap/index.js";
+import { apis } from "@/main/preload";
 
 const createWindow = () => {
   const __filename = fileURLToPath(import.meta.url);

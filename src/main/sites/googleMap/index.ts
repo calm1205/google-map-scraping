@@ -1,4 +1,4 @@
-import { sleep } from "../../libs/index.js";
+import { sleep } from "@/main/libs/index.js";
 import puppeteer from "puppeteer";
 import { startSearch } from "./libs/startSearch.js";
 import { getSearchResult } from "./libs/getSearchResult.js";

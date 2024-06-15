@@ -1,4 +1,4 @@
-import { keyDown } from "../../../libs/index.js";
+import { keyDown } from "@/main/libs/index.js";
 import { Page } from "puppeteer";
 
 export const focusNextResult = async (page: Page) => {
