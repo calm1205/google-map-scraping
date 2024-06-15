@@ -33,7 +33,7 @@
             id="search-input"
             type="text"
             placeholder="検索したいキーワードを入力..."
-            class="text-gray-600 w-full text-sm border-0 border-b border-gray-200 px-4 py-1 outline-0 focus:border-sky-400 hover:border-sky-400"
+            class="text-gray-600 w-full text-sm border-0 border-b border-gray-200 px-2 py-1 outline-0 focus:border-sky-400 hover:border-sky-400"
           />
 
           <button
@@ -53,17 +53,30 @@
           <p>例: 「東京都 飲食店 企業」</p>
           <br />
           <p>1秒間に1件取得できるパフォーマンスを想定しています。</p>
+          <p>処理中にウィンドウを閉じた場合は検索結果は破棄されます。</p>
+          <br />
+          <p>最大検索件数は検証用です。</p>
+          <p>検索を開始すると検索が終了するまで結果を出力できません。</p>
+          <p>最大検索件数を調整することで手早く結果を確認するためにあります</p>
         </details>
       </section>
 
-      <div
-        id="search-loader"
-        class="w-full flex justify-between items-center mt-8"
-      >
-        <div class="flex justify-center gap-6"></div>
-        <p class="text-right text-sm">
-          検索結果: <span id="result-count">0</span>件
-        </p>
+      <div class="w-full flex justify-end mt-8">
+        <div class="text-sm">
+          <p class="flex justify-end">
+            <span class="w-24"> 検索結果: </span>
+            <span> <span class="w-12" id="result-count">0</span>件 </span>
+          </p>
+          <p class="flex justify-end">
+            <span class="w-24"> 最大検索件数: </span>
+            <input
+              id="max-count"
+              value="10"
+              class="w-12 border-0 border-b border-gray-200 pl-1 outline-0 focus:border-sky-400 hover:border-sky-400"
+              type="number"
+            />
+          </p>
+        </div>
       </div>
 
       <section class="w-full h-56 mt-2 relative">

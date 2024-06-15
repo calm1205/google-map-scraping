@@ -13,6 +13,7 @@ export type SearchHandler = {
     stopButton: HTMLButtonElement | null;
     exportButton: HTMLButtonElement | null;
     loader: HTMLDivElement | null;
+    maxCount: HTMLInputElement | null;
     resultCount: HTMLSpanElement | null;
     searchResults: HTMLUListElement | null;
   };

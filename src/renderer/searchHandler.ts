@@ -16,6 +16,7 @@ export const searchHandler: SearchHandler = {
     stopButton: null,
     loader: null,
     exportButton: null,
+    maxCount: null,
     resultCount: null,
     searchResults: null,
   },
@@ -29,6 +30,7 @@ export const searchHandler: SearchHandler = {
     this.dom.stopButton = document.querySelector("#stop-button");
     this.dom.loader = document.querySelector("#loader");
     this.dom.exportButton = document.querySelector("#export-button");
+    this.dom.maxCount = document.querySelector("#max-count");
     this.dom.resultCount = document.querySelector("#result-count");
     this.dom.searchResults = document.querySelector("#search-results");
 
@@ -51,10 +53,12 @@ export const searchHandler: SearchHandler = {
 
       this._toSearchingStatus();
 
+      const maxCount = Number(this.dom.maxCount?.value ?? 10);
+
       try {
         this.results = await this.scraping({
           keyword: this.inputWord,
-          maxCount: 3,
+          maxCount,
         });
       } catch (error) {
         console.error(error);

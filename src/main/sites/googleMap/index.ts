@@ -9,7 +9,7 @@ export type ScrapingArgs = {
   maxCount?: number;
 };
 
-export const scraping = async ({ keyword, maxCount = 3 }: ScrapingArgs) => {
+export const scraping = async ({ keyword, maxCount = 10 }: ScrapingArgs) => {
   const browser = await puppeteer.launch({ headless: true, dumpio: true });
   const page = await browser.newPage();
 
