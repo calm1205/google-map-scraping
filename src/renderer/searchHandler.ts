@@ -1,6 +1,4 @@
 import { SearchHandler } from "./searchHandler.type";
-// import { scraping } from "@/main/sites/googleMap/index";
-// import { ipcRenderer } from "electron";
 
 /**
  * 検索時の処理
@@ -38,20 +36,96 @@ export const searchHandler: SearchHandler = {
   startSearch() {
     this.dom.searchButton?.addEventListener("click", async () => {
       this.inputWord = this.dom.input?.value ?? "";
-      this.isSearching = true;
 
-      if (this.dom.searchButton) this.dom.searchButton.disabled = true;
-      if (this.dom.loader) this.dom.loader.style.display = "flex";
-      if (this.dom.stopButton) this.dom.stopButton.style.display = "flex";
-      if (this.dom.exportButton) this.dom.exportButton.style.display = "none";
-      this.isExportable = false;
+      this._toSearchingStatus();
 
-      const companyInfo = await this.scraping({
-        keyword: this.inputWord,
-        maxCount: 3,
-      });
+      let companyInfo = [];
+      try {
+        companyInfo = await this.scraping({
+          keyword: this.inputWord,
+          maxCount: 3,
+        });
+      } catch (error) {
+        console.error(error);
+      }
+
+      this._toSearchedStatus();
+
       console.log(companyInfo);
     });
+  },
+
+  /**
+   * ローディング中のステータスに変更
+   */
+  _activateLoading() {
+    if (this.dom.loader) this.dom.loader.style.display = "flex";
+  },
+  /**
+   * ローディング中のステータスを解除
+   */
+  _disableLoading() {
+    if (this.dom.loader) this.dom.loader.style.display = "none";
+  },
+  /**
+   * 検索中のステータスに変更
+   */
+  _toSearchingStatus() {
+    this.isSearching = true;
+    this._activateLoading();
+    this._disableSearch();
+    this._disableExport();
+    this._activateStop();
+  },
+  /**
+   * 検索後のステータスに変更
+   */
+  _toSearchedStatus() {
+    this.isSearching = false;
+    this._disableLoading();
+    this._activateExport();
+    this._disableStop();
+  },
+  /**
+   * 検索ボタンの無効化
+   */
+  _disableSearch() {
+    if (this.dom.searchButton) this.dom.searchButton.disabled = true;
+  },
+
+  /**
+   * スタートボタンの活性化
+   */
+  _activateStart() {
+    if (this.dom.searchButton) this.dom.searchButton.disabled = false;
+  },
+
+  /**
+   * ストップボタンの活性化
+   */
+  _activateStop() {
+    if (this.isSearching) return;
+    if (this.dom.stopButton) this.dom.stopButton.style.display = "block";
+  },
+  /**
+   * エクスポートボタンの活性化
+   */
+  _activateExport() {
+    this.isExportable = true;
+    if (this.dom.exportButton) this.dom.exportButton.style.display = "block";
+  },
+  /**
+   * ストップボタンの無効化
+   */
+  _disableStop() {
+    if (this.dom.stopButton) this.dom.stopButton.style.display = "none";
+  },
+  /**
+   * エクスポートボタンの無効化
+   */
+  _disableExport() {
+    this.isExportable = false;
+    if (this.dom.exportButton) this.dom.exportButton.style.display = "none";
   },
 
   /**
@@ -59,14 +133,7 @@ export const searchHandler: SearchHandler = {
    */
   stopSearch() {
     this.dom.stopButton?.addEventListener("click", () => {
-      this.isSearching = false;
-
-      if (this.dom.searchButton) this.dom.searchButton.disabled = false;
-      if (this.dom.loader) this.dom.loader.style.display = "none";
-      if (this.dom.stopButton) this.dom.stopButton.style.display = "none";
-      if (this.dom.exportButton) this.dom.exportButton.style.display = "block";
-      this.isSearching = false;
-      this.isExportable = true;
+      this._toSearchedStatus();
     });
   },
 
