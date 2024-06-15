@@ -1,9 +1,12 @@
+type Args = {
+  content: string;
+  filename: string;
+};
+
 /**
  * client側でファイルをダウンロードする
  */
-export const fileDownload = (content: string, filename: string) => {
-  console.log("content", content);
-
+export const fileDownload = ({ content, filename }: Args) => {
   const blob = new Blob([content], { type: "text/plain" });
   const url = URL.createObjectURL(blob);
 

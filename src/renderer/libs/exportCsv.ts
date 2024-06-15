@@ -12,7 +12,10 @@ export const exportCsv = (input: CsvObject[]) => {
   const csvString = object2String(input);
 
   try {
-    fileDownload("output.csv", csvString);
+    fileDownload({
+      content: csvString,
+      filename: "output.csv",
+    });
   } catch (err) {
     console.error(err);
   }
