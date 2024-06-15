@@ -14,6 +14,7 @@ export const getTargetInfo = async (page: Page): Promise<CsvObject> => {
   let address = "";
   let phoneNumber = "";
   let webSite = "";
+
   for (const resultElement of resultElements) {
     const ariaLabelObj = await resultElement.getProperty("ariaLabel");
     const ariaLabel = (await ariaLabelObj?.jsonValue()) as string;
@@ -22,9 +23,9 @@ export const getTargetInfo = async (page: Page): Promise<CsvObject> => {
     const innerTextObj = await innerDom?.getProperty("innerText");
     const innerText = (await innerTextObj?.jsonValue()) as string;
 
-    if (ariaLabel.includes("住所")) address = innerText;
-    if (ariaLabel.includes("電話番号")) phoneNumber = innerText;
-    if (ariaLabel.includes("ウェブサイト")) webSite = innerText;
+    if (ariaLabel?.includes("住所")) address = innerText;
+    if (ariaLabel?.includes("電話番号")) phoneNumber = innerText;
+    if (ariaLabel?.includes("ウェブサイト")) webSite = innerText;
   }
 
   return {

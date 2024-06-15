@@ -6,12 +6,8 @@ export const focusNextResult = async (page: Page) => {
   const focusedDom = await page.evaluateHandle(() => document.activeElement);
   const parentDom = await focusedDom.getProperty("parentNode");
 
-  try {
-    await parentDom.asElement()?.$(".lcr4fd.S9kvJb");
-    await keyDown(page, "Tab");
-  } catch (error) {
-    console.info("ウェブサイトのボタンがありません");
-  }
+  const webSiteButton = await parentDom.asElement()?.$(".lcr4fd.S9kvJb");
+  if (webSiteButton) await keyDown(page, "Tab");
 
   await keyDown(page, "Tab"); // ルートにフォーカス
   await keyDown(page, "Tab"); // 次の検索結果にフォーカス
