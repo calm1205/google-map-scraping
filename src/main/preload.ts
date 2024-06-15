@@ -1,9 +1,9 @@
-import * as electron from "electron";
+// import * as electron from "electron";
+const { contextBridge, ipcRenderer } = require("electron");
 
-export const apis = {
-  scraping: "scraping",
-};
-
-electron?.contextBridge?.exposeInMainWorld("electronAPI", {
-  scraping: (args: any) => electron.ipcRenderer.invoke(apis.scraping, args),
+// electron?.contextBridge?.exposeInMainWorld("electronAPI", {
+// scraping: (args: any) => electron.ipcRenderer.invoke(apis.scraping, args),
+// });
+contextBridge.exposeInMainWorld("electronAPI", {
+  scraping: (args: any) => ipcRenderer.invoke("scraping", args),
 });

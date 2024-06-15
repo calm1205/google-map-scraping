@@ -2,7 +2,6 @@ import { app, BrowserWindow, ipcMain } from "electron";
 import * as path from "node:path";
 import { fileURLToPath } from "url";
 import { scraping } from "./sites/googleMap/index.js";
-import { apis } from "./preload.js";
 
 const createWindow = () => {
   const __filename = fileURLToPath(import.meta.url);
@@ -21,7 +20,7 @@ const createWindow = () => {
 };
 
 app.on("ready", () => {
-  ipcMain.handle(apis.scraping, () => scraping);
+  ipcMain.handle("scraping", () => scraping);
   createWindow();
 });
 
