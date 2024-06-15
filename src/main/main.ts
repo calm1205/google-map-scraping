@@ -2,7 +2,7 @@ import { app, BrowserWindow, ipcMain } from "electron";
 import * as path from "node:path";
 import { fileURLToPath } from "url";
 import { scraping } from "./sites/googleMap/index.js";
-import { apis } from "./preload.mjs";
+import { apis } from "./preload.js";
 
 const createWindow = () => {
   const __filename = fileURLToPath(import.meta.url);
@@ -12,7 +12,7 @@ const createWindow = () => {
     width: 800,
     height: 600,
     webPreferences: {
-      preload: path.join(__dirname, "preload.mjs"),
+      preload: path.join(__dirname, "preload.js"),
     },
   });
 
