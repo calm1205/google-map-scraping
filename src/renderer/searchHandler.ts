@@ -1,4 +1,4 @@
-import { exportCsv } from "./libs/exportCsv";
+import { exportCsv } from "./libs/exportCsv.js";
 import { SearchHandler } from "./searchHandler.type";
 
 /**
@@ -83,8 +83,9 @@ export const searchHandler: SearchHandler = {
    */
   _toSearchedStatus() {
     this.isSearching = false;
-    this._disableLoading();
     this._activateExport();
+    this._activateStart();
+    this._disableLoading();
     this._disableStop();
   },
   /**

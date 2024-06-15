@@ -27,8 +27,6 @@ export const getTargetInfo = async (page: Page): Promise<CsvObject> => {
     if (ariaLabel.includes("ウェブサイト")) webSite = innerText;
   }
 
-  console.log({ name, address, phoneNumber, webSite });
-
   return {
     name,
     address,

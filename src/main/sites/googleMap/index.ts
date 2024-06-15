@@ -10,7 +10,7 @@ export type ScrapingArgs = {
 };
 
 export const scraping = async ({ keyword, maxCount = 3 }: ScrapingArgs) => {
-  const browser = await puppeteer.launch({ headless: false, dumpio: true });
+  const browser = await puppeteer.launch({ headless: true, dumpio: true });
   const page = await browser.newPage();
 
   await page.goto(URL);
@@ -27,8 +27,5 @@ export const scraping = async ({ keyword, maxCount = 3 }: ScrapingArgs) => {
 
   await browser.close();
 
-  console.log("companyInfoArray", companyInfoArray);
   return companyInfoArray;
 };
-
-// scraping({ keyword: "株式会社" });
