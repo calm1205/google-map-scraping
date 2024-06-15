@@ -1,18 +1,10 @@
 import { defineConfig } from "vite";
 import { fileURLToPath } from "node:url";
 import { nodePolyfills } from "vite-plugin-node-polyfills";
-import commonjs from "@rollup/plugin-commonjs";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [
-    nodePolyfills(),
-    commonjs({
-      dynamicRequireTargets: [
-        "node_modules/selenium-webdriver/lib/atoms/get-attribute.js",
-      ],
-    }),
-  ],
+  plugins: [nodePolyfills()],
   base: "./",
   build: {
     outDir: "dist-vite",

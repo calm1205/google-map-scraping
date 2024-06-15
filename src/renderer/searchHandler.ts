@@ -1,7 +1,6 @@
 import { ScrapingArgs } from "../main/sites/googleMap";
 import { SearchHandler } from "./searchHandler.type";
-// import { scraping } from "../index";
-// import { googleMap } from "../sites/puppeteer/googleMap";
+import { scraping } from "@/main/sites/googleMap/index";
 import { ipcRenderer } from "electron";
 
 /**
@@ -85,10 +84,12 @@ export const searchHandler: SearchHandler = {
    * スクレイピング
    */
   async scraping({ keyword, maxCount }) {
-    const companyInfo = await (window as any).electronAPI.scraping({
-      keyword,
-      maxCount,
-    });
-    return companyInfo;
+    await scraping({ keyword, maxCount });
+    //   const companyInfo = await (window as any).electronAPI.scraping({
+    //     keyword,
+    //     maxCount,
+    //   });
+    //   return companyInfo;
+    // },
   },
 };
