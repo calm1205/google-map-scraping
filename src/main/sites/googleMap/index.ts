@@ -1,7 +1,7 @@
 import { sleep } from "@/main/libs/index.js";
 import puppeteer from "puppeteer";
-import { startSearch } from "./libs/startSearch.js";
-import { getSearchResult } from "./libs/getSearchResult.js";
+import { startSearch } from "./startSearch.js";
+import { getSearchResult } from "./getSearchResult.js";
 
 const URL = "https://www.google.com/maps/";
 export type ScrapingArgs = {
