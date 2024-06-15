@@ -1,4 +1,4 @@
-import { exportCsv } from "./libs/exportCsv.js";
+import { CsvObject, exportCsv } from "./libs/exportCsv.js";
 import { SearchHandler } from "./searchHandler.type";
 
 /**
@@ -9,12 +9,15 @@ export const searchHandler: SearchHandler = {
   isSearching: false,
   isExportable: false,
   results: [],
+  resultCount: 0,
   dom: {
     input: null,
     searchButton: null,
     stopButton: null,
     loader: null,
     exportButton: null,
+    resultCount: null,
+    searchResults: null,
   },
 
   /**
@@ -26,6 +29,13 @@ export const searchHandler: SearchHandler = {
     this.dom.stopButton = document.querySelector("#stop-button");
     this.dom.loader = document.querySelector("#loader");
     this.dom.exportButton = document.querySelector("#export-button");
+    this.dom.resultCount = document.querySelector("#result-count");
+    this.dom.searchResults = document.querySelector("#search-results");
+
+    (window as any).electronAPI.sendResult((companyInfo: CsvObject) => {
+      this.incrementResultCount();
+      this.updateResults(companyInfo);
+    });
 
     this.startSearch();
     this.stopSearch();
@@ -108,6 +118,35 @@ export const searchHandler: SearchHandler = {
     this.dom.exportButton?.addEventListener("click", () => {
       exportCsv(this.results);
     });
+  },
+
+  incrementResultCount() {
+    if (this.dom.resultCount) {
+      const count = Number(this.dom.resultCount.textContent);
+      this.dom.resultCount.textContent = (count + 1).toString();
+      this.resultCount = count + 1;
+    }
+  },
+
+  updateResults(companyInfo: CsvObject) {
+    if (this.dom.searchResults === null) return;
+
+    console.log("updateResults", companyInfo);
+    const htmlText = `
+            <p class="w-8">${this.resultCount}.</p>
+            <div>
+              <p class="font-bold">${companyInfo.name}</p>
+              <p class="text-gray-400 text-sm">${companyInfo.address}</p>
+              <p class="text-gray-400 text-sm">${companyInfo.phoneNumber}</p>
+              <p class="text-gray-400 text-sm">${companyInfo.webSite}</p>
+            </div>
+          `;
+
+    const newElement = document.createElement("li");
+    newElement.className = "flex";
+    newElement.innerHTML = htmlText;
+
+    this.dom.searchResults?.appendChild(newElement);
   },
 
   async scraping({ keyword, maxCount }) {

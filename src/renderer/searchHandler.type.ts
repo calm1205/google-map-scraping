@@ -6,12 +6,15 @@ export type SearchHandler = {
   isSearching: boolean;
   isExportable: boolean;
   results: CsvObject[];
+  resultCount: number;
   dom: {
     input: HTMLInputElement | null;
     searchButton: HTMLButtonElement | null;
     stopButton: HTMLButtonElement | null;
     exportButton: HTMLButtonElement | null;
     loader: HTMLDivElement | null;
+    resultCount: HTMLSpanElement | null;
+    searchResults: HTMLUListElement | null;
   };
   init: () => void;
   startSearch: () => void;
@@ -27,5 +30,7 @@ export type SearchHandler = {
   _disableLoading: () => void;
   _disableExport: () => void;
   export: () => void;
+  updateResults: (companyInfo: CsvObject) => void;
+  incrementResultCount: () => void;
   scraping: (args: ScrapingArgs) => any;
 };

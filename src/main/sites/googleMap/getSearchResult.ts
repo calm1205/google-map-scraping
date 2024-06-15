@@ -3,6 +3,7 @@ import { focusFirstResult } from "./focusFirstResult.js";
 import { sleep } from "@/main/libs/index.js";
 import { getTargetInfo } from "./getTargetInfo.js";
 import { focusNextResult } from "./focusNextResult.js";
+import { mainWindow } from "@/main/main.js";
 
 /**
  * keywordで検索した結果を取得
@@ -26,6 +27,9 @@ export const getSearchResult = async (
   while (count < maxCount) {
     const companyInfo = await getTargetInfo(page);
     companyInfoArray.push(companyInfo);
+
+    // レンダラー側へ結果を送信
+    mainWindow?.webContents.send("sendResult", companyInfo);
 
     await sleep(1000);
     await focusNextResult(page);

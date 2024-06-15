@@ -3,11 +3,13 @@ import * as path from "node:path";
 import { fileURLToPath } from "url";
 import { scraping, ScrapingArgs } from "./sites/googleMap/index.js";
 
+export let mainWindow: BrowserWindow | null = null;
+
 const createWindow = () => {
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = path.dirname(__filename);
 
-  const window = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
@@ -16,7 +18,7 @@ const createWindow = () => {
   });
 
   // トランスパイル後のpathを指定
-  window.loadFile("dist/index.html");
+  mainWindow.loadFile("dist/index.html");
 };
 
 app.on("ready", () => {
