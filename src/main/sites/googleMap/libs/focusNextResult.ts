@@ -1,5 +1,5 @@
-import { keyDown } from "@/main/libs";
-import { ElementHandle, Page } from "puppeteer";
+import { keyDown } from "../../../libs/index.js";
+import { Page } from "puppeteer";
 
 export const focusNextResult = async (page: Page) => {
   // ウェブサイトがある場合はTABを１回スキップ

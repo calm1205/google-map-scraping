@@ -1,1 +1,1 @@
-fswatch -o src/index.html | while read; do rsync -avz src/index.html dist/index.html; done
+fswatch -o index.html | while read; do rsync -avz index.html dist/index.html; done

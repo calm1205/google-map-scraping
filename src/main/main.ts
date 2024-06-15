@@ -21,7 +21,7 @@ const createWindow = () => {
 };
 
 app.on("ready", () => {
-  ipcMain.handle(apis.scraping, scraping);
+  ipcMain.handle(apis.scraping, () => scraping);
   createWindow();
 });
 
