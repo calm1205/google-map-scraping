@@ -1,10 +1,10 @@
-import { TsvObject } from "@/main/libs/exportTsv/type";
+import { CsvObject } from "@/renderer/libs/exportCsv";
 import { Page } from "puppeteer";
 
 /**
  * 検索結果から必要な情報（会社名、電話番号、住所）を取得
  */
-export const getTargetInfo = async (page: Page): Promise<TsvObject> => {
+export const getTargetInfo = async (page: Page): Promise<CsvObject> => {
   const h1Dom = await page.$("h1.DUwDvf.lfPIob");
   const h1InnerText = await h1Dom?.getProperty("innerText");
   const name = (await h1InnerText?.jsonValue()) as string;

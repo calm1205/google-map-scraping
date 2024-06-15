@@ -1,4 +1,4 @@
-import { exportTsv } from "@/main/libs/exportTsv/exportTsv.js";
+import { exportCsv } from "./libs/exportCsv";
 import { SearchHandler } from "./searchHandler.type";
 
 /**
@@ -141,7 +141,7 @@ export const searchHandler: SearchHandler = {
    */
   export() {
     this.dom.exportButton?.addEventListener("click", () => {
-      exportTsv(this.results);
+      exportCsv(this.results);
     });
   },
 
