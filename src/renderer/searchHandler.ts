@@ -1,7 +1,6 @@
-import { ScrapingArgs } from "../main/sites/googleMap";
 import { SearchHandler } from "./searchHandler.type";
-import { scraping } from "@/main/sites/googleMap/index";
-import { ipcRenderer } from "electron";
+// import { scraping } from "@/main/sites/googleMap/index";
+// import { ipcRenderer } from "electron";
 
 /**
  * 検索時の処理
@@ -84,12 +83,10 @@ export const searchHandler: SearchHandler = {
    * スクレイピング
    */
   async scraping({ keyword, maxCount }) {
-    await scraping({ keyword, maxCount });
-    //   const companyInfo = await (window as any).electronAPI.scraping({
-    //     keyword,
-    //     maxCount,
-    //   });
-    //   return companyInfo;
-    // },
+    const companyInfo = await (window as any).electronAPI.scraping({
+      keyword,
+      maxCount,
+    });
+    return companyInfo;
   },
 };
