@@ -15,7 +15,8 @@
     "electron": "concurrently 'npm run build:sync' 'electron .'",
     "start": "concurrently 'npm run build:sync' 'electron-forge start'",
     "package": "electron-forge package",
-    "make": "electron-forge make"
+    "make": "electron-forge make",
+    "make-windows": "npx electron-forge make --platform=win32 --arch=x64"
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.1",
