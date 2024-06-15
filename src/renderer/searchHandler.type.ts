@@ -1,9 +1,11 @@
+import { TsvObject } from "@/main/libs/exportTsv/type";
 import { ScrapingArgs } from "@/main/sites/googleMap";
 
 export type SearchHandler = {
   inputWord: string;
   isSearching: boolean;
   isExportable: boolean;
+  results: TsvObject[];
   dom: {
     input: HTMLInputElement | null;
     searchButton: HTMLButtonElement | null;

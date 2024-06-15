@@ -1,3 +1,4 @@
+import { exportTsv } from "@/main/libs/exportTsv/exportTsv.js";
 import { SearchHandler } from "./searchHandler.type";
 
 /**
@@ -7,6 +8,7 @@ export const searchHandler: SearchHandler = {
   inputWord: "",
   isSearching: false,
   isExportable: false,
+  results: [],
   dom: {
     input: null,
     searchButton: null,
@@ -39,9 +41,8 @@ export const searchHandler: SearchHandler = {
 
       this._toSearchingStatus();
 
-      let companyInfo = [];
       try {
-        companyInfo = await this.scraping({
+        this.results = await this.scraping({
           keyword: this.inputWord,
           maxCount: 3,
         });
@@ -51,7 +52,7 @@ export const searchHandler: SearchHandler = {
 
       this._toSearchedStatus();
 
-      console.log(companyInfo);
+      console.log(this.results);
     });
   },
 
@@ -92,14 +93,12 @@ export const searchHandler: SearchHandler = {
   _disableSearch() {
     if (this.dom.searchButton) this.dom.searchButton.disabled = true;
   },
-
   /**
    * スタートボタンの活性化
    */
   _activateStart() {
     if (this.dom.searchButton) this.dom.searchButton.disabled = false;
   },
-
   /**
    * ストップボタンの活性化
    */
@@ -142,7 +141,7 @@ export const searchHandler: SearchHandler = {
    */
   export() {
     this.dom.exportButton?.addEventListener("click", () => {
-      console.log("export");
+      exportTsv(this.results);
     });
   },
 
