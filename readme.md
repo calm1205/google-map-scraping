@@ -12,19 +12,15 @@ google map のスクレイピング
 $ npm run start
 ```
 
-`electron-forge start`の実行前に`src`ディレクトリを`dist`に同期する（トランスパイル + 差分の即時反映）
-
-終了時は `Ctrl + C` で終了（electron のブラウザを閉じても同期が続く）
+実行前に`src`ディレクトリを`dist`に同期する（トランスパイル + 差分の即時反映）
 
 <br/><br/>
 
-## build
+## package
 
 ```bash
-$ npm run make
+$ npm run package
 ```
-
-`electron-forge make`で`out/make`ディレクトリにアプリケーションをビルドして出力する
 
 <br/><br/>
 
@@ -33,7 +29,7 @@ $ npm run make
 - src
   - main
     - electronのメインプロセス
-    - node.jsのライブラリ実行（puppetterによるスクレイピング）
+    - node.jsのライブラリ実行（puppeteerによるスクレイピング）
   - renderer
     - electronのレンダラプロセス
     - dom操作
