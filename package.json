@@ -17,7 +17,6 @@
     "package:win": "electron-packager . min-electron --platform=win32 --arch=x64 --overwrite"
   },
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.1",
     "puppeteer": "^22.11.0"
   },
   "devDependencies": {
