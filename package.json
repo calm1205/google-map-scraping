@@ -14,7 +14,8 @@
     "build:sync": "concurrently 'npm run transpile' 'npm run view:sync' 'npm run tailwind'",
     "start": "concurrently 'npm run build:sync' 'electron .'",
     "package": "electron-packager . min-electron --overwrite",
-    "package:win": "electron-packager . min-electron --platform=win32 --arch=x64 --overwrite"
+    "package:win": "electron-packager . min-electron --platform=win32 --arch=x64 --overwrite",
+    "get:chrome": "npx puppeteer browsers install chrome"
   },
   "dependencies": {
     "puppeteer": "^22.11.0"

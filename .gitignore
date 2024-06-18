@@ -7,3 +7,6 @@ dist
 
 *.tsv
 out/
+.cache
+*.zip
+*-win32-x64
