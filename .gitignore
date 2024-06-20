@@ -9,8 +9,6 @@ dist
 out/
 .cache
 *.zip
-*-win32-x64
 
-# build後のソースファイル(min-electron-win32-x64/resourcesに配置されるもの)
-# zipファイルが大きすぎるので分割
-resources
+# electronのpackageファイル(e.g. web-scraping-win32-x64)
+web-scraping-*

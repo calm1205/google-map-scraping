@@ -33,3 +33,11 @@ $ npm run package
   - renderer
     - electronのレンダラプロセス
     - dom操作
+
+<br/><br/>
+
+## 注意点
+
+puppeteerは起動するためにlocalにchromeをインストールする必要がある。
+electronのapp起動時にchromeが存在しない場合には自動でインストールされる。
+そのためchrome自体はpackageに含めない。（`dist`内に`.cache`が存在してはならない）
