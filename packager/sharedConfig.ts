@@ -7,5 +7,12 @@ export const sharedConfig: Options = {
   dir: ".",
   out: "./packed",
   overwrite: true,
-  ignore: [".git", "chrome*", "src", "tailwind.config.js", ".prettierrc.json"],
+  ignore: [
+    ".git",
+    "src",
+    "tailwind.config.js",
+    ".prettierrc.json",
+    "tsconfig.json",
+    "packed",
+  ],
 };
