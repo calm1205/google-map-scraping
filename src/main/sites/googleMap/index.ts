@@ -2,6 +2,8 @@ import { sleep } from "@/main/libs/index.js";
 import puppeteer from "puppeteer";
 import { startSearch } from "./startSearch.js";
 import { getSearchResult } from "./getSearchResult.js";
+import * as path from "node:path";
+import { fileURLToPath } from "url";
 
 const URL = "https://www.google.com/maps/";
 export type ScrapingArgs = {
@@ -9,10 +11,14 @@ export type ScrapingArgs = {
   maxCount?: number;
 };
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 export const scraping = async ({ keyword, maxCount = 10 }: ScrapingArgs) => {
   const browser = await puppeteer.launch({
     headless: true,
     dumpio: true,
+    executablePath: path.join(__dirname, "../../../", "chromedriver"),
   });
   const page = await browser.newPage();
 
