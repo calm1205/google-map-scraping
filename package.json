@@ -13,9 +13,8 @@
     "build": "npm run transpile && ./scripts/copy-view.sh && tailwindcss -i src/input.css -o dist/output.css",
     "build:sync": "concurrently 'npm run transpile' 'npm run view:sync' 'npm run tailwind'",
     "start": "electron .",
-    "package": "electron-packager . web-scraping --overwrite",
-    "package:win": "electron-packager . web-scraping --platform=win32 --arch=x64 --overwrite",
-    "get:chrome": "npx puppeteer browsers install chrome"
+    "package": "tsx packager/macArm64.ts",
+    "package:win": "tsx packager/win64.ts"
   },
   "dependencies": {
     "puppeteer": "^22.11.0"

@@ -20,7 +20,7 @@ export const scraping = async ({ keyword, maxCount = 10 }: ScrapingArgs) => {
   const browser = await puppeteer.launch({
     headless: true,
     dumpio: true,
-    executablePath: path.join(getRootPath(), CHROME_PATH.macArm64),
+    executablePath: path.join(getRootPath(), CHROME_PATH.win64),
   });
   const page = await browser.newPage();
 

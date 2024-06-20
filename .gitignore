@@ -10,8 +10,8 @@ out/
 .cache
 *.zip
 
-# electronのpackageファイル(e.g. web-scraping-win32-x64)
-web-scraping-*
+# electronのpackage化ファイル
+packed
 
 # google chrome のバイナリファイル
 chrome-*
