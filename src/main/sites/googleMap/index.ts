@@ -3,27 +3,24 @@ import puppeteer from "puppeteer";
 import { startSearch } from "./startSearch.js";
 import { getSearchResult } from "./getSearchResult.js";
 import * as path from "node:path";
-import { fileURLToPath } from "url";
+import { getRootPath } from "@/main/libs/getRootPath.js";
 
 const URL = "https://www.google.com/maps/";
+const CHROME_PATH = {
+  macArm64: `chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing`,
+  win64: `chrome-win64/chrome.exe`,
+};
+
 export type ScrapingArgs = {
   keyword: string;
   maxCount?: number;
 };
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
 export const scraping = async ({ keyword, maxCount = 10 }: ScrapingArgs) => {
   const browser = await puppeteer.launch({
     headless: true,
     dumpio: true,
-
-    executablePath: path.join(
-      __dirname,
-      "../../../",
-      `chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing`,
-    ),
+    executablePath: path.join(getRootPath(), CHROME_PATH.macArm64),
   });
   const page = await browser.newPage();
 

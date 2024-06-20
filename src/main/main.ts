@@ -1,19 +1,16 @@
 import { app, BrowserWindow, ipcMain } from "electron";
 import * as path from "node:path";
-import { fileURLToPath } from "url";
 import { scraping, ScrapingArgs } from "./sites/googleMap/index.js";
+import { getRootPath } from "./libs/getRootPath.js";
 
 export let mainWindow: BrowserWindow | null = null;
 
 const createWindow = () => {
-  const __filename = fileURLToPath(import.meta.url);
-  const __dirname = path.dirname(__filename);
-
   mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
-      preload: path.join(__dirname, "preload.js"),
+      preload: path.join(getRootPath(), "main", "preload.js"),
     },
   });
 
