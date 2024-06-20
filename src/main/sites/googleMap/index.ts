@@ -18,7 +18,12 @@ export const scraping = async ({ keyword, maxCount = 10 }: ScrapingArgs) => {
   const browser = await puppeteer.launch({
     headless: true,
     dumpio: true,
-    executablePath: path.join(__dirname, "../../../", "chromedriver"),
+
+    executablePath: path.join(
+      __dirname,
+      "../../../",
+      `chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing`,
+    ),
   });
   const page = await browser.newPage();
 

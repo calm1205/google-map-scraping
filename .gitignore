@@ -12,3 +12,6 @@ out/
 
 # electronのpackageファイル(e.g. web-scraping-win32-x64)
 web-scraping-*
+
+# google chrome のバイナリファイル
+chrome-*
