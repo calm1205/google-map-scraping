@@ -14,5 +14,6 @@ export const sharedConfig: Options = {
     ".prettierrc.json",
     "tsconfig.json",
     "packed",
+    "packager",
   ],
 };

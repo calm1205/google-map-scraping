@@ -20,10 +20,11 @@ const createWindow = () => {
 
 app.on("ready", () => {
   ipcMain.handle(
-    "scraping",
+    "scraping-channel",
     async (_event, { keyword, maxCount }: ScrapingArgs) =>
       scraping({ keyword, maxCount }),
   );
+
   createWindow();
 });
 

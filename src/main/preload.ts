@@ -3,7 +3,7 @@ const { contextBridge, ipcRenderer } = require("electron");
 
 contextBridge.exposeInMainWorld("electronAPI", {
   // レンダラー -> メインプロセス
-  scraping: (args: any) => ipcRenderer.invoke("scraping", args),
+  scraping: (args: any) => ipcRenderer.invoke("scraping-channel", args),
 
   // メインプロセス -> レンダラー
   sendResult: (callback: any) =>
