@@ -12,7 +12,7 @@
     "tailwind": "tailwindcss -i src/input.css -o dist/output.css --watch",
     "build": "npm run transpile && ./scripts/copy-file.sh && tailwindcss -i src/input.css -o dist/output.css",
     "build:sync": "concurrently 'npm run transpile' 'npm run view:sync' 'npm run tailwind'",
-    "start": "electron .",
+    "start": "./scripts/update-html-path.sh && electron .",
     "package": "tsx packager/macArm64.ts",
     "package:win": "tsx packager/win64.ts"
   },
