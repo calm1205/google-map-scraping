@@ -51,6 +51,7 @@ export const searchHandler: SearchHandler = {
     this.dom.searchButton?.addEventListener("click", async () => {
       this.inputWord = this.dom.input?.value ?? "";
 
+      this._resetResults();
       this._toSearchingStatus();
 
       const maxCount = Number(this.dom.maxCount?.value ?? 10);
@@ -71,6 +72,10 @@ export const searchHandler: SearchHandler = {
     });
   },
 
+  _resetResults() {
+    this.results = [];
+    this.resultCount = 0;
+  },
   _activateLoading() {
     if (this.dom.loader) this.dom.loader.style.display = "flex";
   },

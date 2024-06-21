@@ -22,6 +22,7 @@ export type SearchHandler = {
   stopSearch: () => void;
   _toSearchingStatus: () => void;
   _toSearchedStatus: () => void;
+  _resetResults: () => void;
   _activateStart: () => void;
   _activateStop: () => void;
   _activateLoading: () => void;
