@@ -7,14 +7,4 @@ export const sharedConfig: Options = {
   dir: "./dist",
   out: "./packed",
   overwrite: true,
-  // ignore: [
-  //   ".git",
-  //   "src",
-  //   "scripts",
-  //   "tailwind.config.js",
-  //   ".prettierrc.json",
-  //   "tsconfig.json",
-  //   "packed",
-  //   "packager",
-  // ],
 };

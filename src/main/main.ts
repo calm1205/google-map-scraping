@@ -15,7 +15,7 @@ const createWindow = () => {
   });
 
   // トランスパイル後のpathを指定
-  mainWindow.loadFile("dist/index.html");
+  mainWindow.loadFile("index.html");
 };
 
 app.on("ready", () => {

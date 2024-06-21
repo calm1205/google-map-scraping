@@ -1,7 +1,0 @@
-{
-  "name": "web-scraping-src",
-  "main": "main/main.js",
-  "dependencies": {
-    "puppeteer": "^22.12.0"
-  }
-}

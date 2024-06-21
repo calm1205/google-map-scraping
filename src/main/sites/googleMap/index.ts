@@ -17,27 +17,24 @@ export type ScrapingArgs = {
 };
 
 export const scraping = async ({ keyword, maxCount = 10 }: ScrapingArgs) => {
-  const browser = await puppeteer.launch();
-  // const browser = await puppeteer.launch({
-  //   headless: true,
-  //   dumpio: true,
-  //   executablePath: path.join(getRootPath(), CHROME_PATH.macArm64),
-  // });
+  const browser = await puppeteer.launch({
+    headless: true,
+    dumpio: true,
+    executablePath: path.join(getRootPath(), CHROME_PATH.macArm64),
+  });
 
-  return [];
+  const page = await browser.newPage();
+  await page.goto(URL);
 
-  // const page = await browser.newPage();
-  // await page.goto(URL);
+  await page.setViewport({ width: 1280, height: 1024 });
+  console.log("画面描画");
+  await sleep(1000);
 
-  // await page.setViewport({ width: 1280, height: 1024 });
-  // console.log("画面描画");
-  // await sleep(1000);
+  await startSearch(page, keyword);
+  console.log("検索中...");
+  await sleep(2000);
 
-  // await startSearch(page, keyword);
-  // console.log("検索中...");
-  // await sleep(2000);
-
-  // const companyInfoArray = await getSearchResult(page, keyword, maxCount);
-  // await browser.close();
-  // return companyInfoArray;
+  const companyInfoArray = await getSearchResult(page, keyword, maxCount);
+  await browser.close();
+  return companyInfoArray;
 };
