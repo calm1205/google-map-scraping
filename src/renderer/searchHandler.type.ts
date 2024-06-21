@@ -33,5 +33,4 @@ export type SearchHandler = {
   export: () => void;
   updateResults: (companyInfo: CsvObject) => void;
   incrementResultCount: () => void;
-  scraping: (args: ScrapingArgs) => any;
 };

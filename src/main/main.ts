@@ -22,7 +22,7 @@ app.on("ready", () => {
   ipcMain.handle(
     "scraping-channel",
     async (_event, { keyword, maxCount }: ScrapingArgs) =>
-      scraping({ keyword, maxCount }),
+      await scraping({ keyword, maxCount }),
   );
 
   createWindow();

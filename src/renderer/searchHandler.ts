@@ -56,10 +56,11 @@ export const searchHandler: SearchHandler = {
       const maxCount = Number(this.dom.maxCount?.value ?? 10);
 
       try {
-        this.results = await this.scraping({
+        const companyInfo = await (window as any).electronAPI.scraping({
           keyword: this.inputWord,
           maxCount,
         });
+        this.results = companyInfo;
       } catch (error) {
         console.error(error);
       }
@@ -151,13 +152,5 @@ export const searchHandler: SearchHandler = {
     newElement.innerHTML = htmlText;
 
     this.dom.searchResults?.appendChild(newElement);
-  },
-
-  async scraping({ keyword, maxCount }) {
-    const companyInfo = await (window as any).electronAPI.scraping({
-      keyword,
-      maxCount,
-    });
-    return companyInfo;
   },
 };

@@ -8,9 +8,9 @@
   "author": "calm1205",
   "scripts": {
     "transpile": "tsc && tsc-alias",
-    "view:sync": "./scripts/copy-view.sh && ./scripts/sync-index-html.sh",
+    "view:sync": "./scripts/copy-file.sh && ./scripts/sync-index-html.sh",
     "tailwind": "tailwindcss -i src/input.css -o dist/output.css --watch",
-    "build": "npm run transpile && ./scripts/copy-view.sh && tailwindcss -i src/input.css -o dist/output.css",
+    "build": "npm run transpile && ./scripts/copy-file.sh && tailwindcss -i src/input.css -o dist/output.css",
     "build:sync": "concurrently 'npm run transpile' 'npm run view:sync' 'npm run tailwind'",
     "start": "electron .",
     "package": "tsx packager/macArm64.ts",
