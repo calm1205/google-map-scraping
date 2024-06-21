@@ -20,7 +20,8 @@ export const scraping = async ({ keyword, maxCount = 10 }: ScrapingArgs) => {
   const browser = await puppeteer.launch({
     headless: true,
     dumpio: true,
-    executablePath: path.join(getRootPath(), CHROME_PATH.macArm64),
+    executablePath: path.join(getRootPath(), CHROME_PATH.win64),
+    args: ["--window-size=1980,1080"],
   });
 
   const page = await browser.newPage();
@@ -28,11 +29,11 @@ export const scraping = async ({ keyword, maxCount = 10 }: ScrapingArgs) => {
 
   await page.setViewport({ width: 1280, height: 1024 });
   console.log("画面描画");
-  await sleep(1000);
+  await sleep(2000);
 
   await startSearch(page, keyword);
   console.log("検索中...");
-  await sleep(2000);
+  await sleep(7000);
 
   const companyInfoArray = await getSearchResult(page, keyword, maxCount);
   await browser.close();

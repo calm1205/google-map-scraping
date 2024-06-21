@@ -11,10 +11,10 @@ import { mainWindow } from "@/main/main.js";
 export const getSearchResult = async (
   page: Page,
   keyword: string,
-  maxCount: number,
+  maxCount: number
 ) => {
   const searchResultWrapper = await page.$(
-    `[aria-label='「${keyword}」の検索結果']`,
+    `[aria-label='「${keyword}」の検索結果']`
   );
 
   const firstResult = await searchResultWrapper?.$(".hfpxzc");
@@ -31,9 +31,9 @@ export const getSearchResult = async (
     // レンダラー側へ結果を送信
     mainWindow?.webContents.send("sendResult", companyInfo);
 
-    await sleep(1000);
+    await sleep(3000);
     await focusNextResult(page);
-    await sleep(1000);
+    await sleep(10000);
 
     count++;
     const focusedDom = await page.evaluateHandle(() => document.activeElement);
