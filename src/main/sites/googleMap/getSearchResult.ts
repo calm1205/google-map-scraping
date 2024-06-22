@@ -39,13 +39,6 @@ export const getSearchResult = async (
     if (!nextResult) break;
 
     count++;
-    // const endOfList = await page.$(".HlvSq");
-    // console.log(endOfList);
-    // if (endOfList) {
-    //   await sleep(100000);
-    //   console.log("> 検索結果の最後に到達しました");
-    //   break;
-    // }
   }
 
   return companyInfoArray;
