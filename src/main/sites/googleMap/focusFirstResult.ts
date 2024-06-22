@@ -10,6 +10,6 @@ export const focusFirstResult = async (
   if (!dom) return;
 
   await dom.click();
-  await sleep(5000);
+  await sleep(1000);
   await dom.click();
 };

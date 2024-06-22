@@ -1,9 +1,9 @@
-import { Page } from "puppeteer";
+import { ElementHandle, Page } from "puppeteer";
 import { focusFirstResult } from "./focusFirstResult.js";
-import { sleep } from "@/main/libs/index.js";
+import { keyDown, sleep } from "@/main/libs/index.js";
 import { getTargetInfo } from "./getTargetInfo.js";
-import { focusNextResult } from "./focusNextResult.js";
 import { mainWindow } from "@/main/main.js";
+import { getNextResult } from "./getNextResult.js";
 
 /**
  * keywordで検索した結果を取得
@@ -17,11 +17,13 @@ export const getSearchResult = async (
     `[aria-label='「${keyword}」の検索結果']`
   );
 
-  const firstResult = await searchResultWrapper?.$(".hfpxzc");
-  await focusFirstResult(firstResult);
+  const searchResultSelector = ".Nv2PK.THOPZb.CpccDe";
+  const searchResult = await searchResultWrapper?.$(searchResultSelector);
+
+  await focusFirstResult(searchResult);
 
   const companyInfoArray = [];
-  console.log("検索結果を取得中...");
+  console.log("> 検索結果を取得中...");
 
   let count = 0;
   while (count < maxCount) {
@@ -31,15 +33,18 @@ export const getSearchResult = async (
     // レンダラー側へ結果を送信
     mainWindow?.webContents.send("sendResult", companyInfo);
 
-    await sleep(3000);
-    await focusNextResult(page);
-    await sleep(10000);
+    await sleep(1000);
+    const nextResult = await getNextResult(page, searchResult);
+    await keyDown(page, "ArrowDown");
+    await keyDown(page, "ArrowDown");
+    await keyDown(page, "ArrowDown");
+    await (nextResult as ElementHandle<Element>).click();
+    await (nextResult as ElementHandle<Element>).click();
+    await sleep(1000);
 
     count++;
-    const focusedDom = await page.evaluateHandle(() => document.activeElement);
-    const className = (await focusedDom.getProperty("class")).toString();
-    const isBottom = className === "D6NGZc";
-    if (isBottom) break;
+    const endOfList = await page.$(".HlvSq");
+    if (endOfList) break;
   }
 
   return companyInfoArray;
