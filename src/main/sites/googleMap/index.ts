@@ -23,11 +23,11 @@ export type ScrapingArgs = {
  * @param keyword 検索キーワード
  * @param maxCount 取得する最大件数
  * */
-export const scraping = async ({ keyword, maxCount = 10 }: ScrapingArgs) => {
+export const scraping = async ({ keyword, maxCount = 3 }: ScrapingArgs) => {
   const browser = await puppeteer.launch({
     headless: false,
     dumpio: true,
-    executablePath: path.join(getRootPath(), CHROME_PATH.win64),
+    executablePath: path.join(getRootPath(), CHROME_PATH.macArm64),
     args: ["--window-size=1980,1080"],
   });
 

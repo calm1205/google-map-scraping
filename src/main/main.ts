@@ -7,8 +7,8 @@ export let mainWindow: BrowserWindow | null = null;
 
 const createWindow = () => {
   mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 1920,
+    height: 1080,
     webPreferences: {
       preload: path.join(getRootPath(), "main", "preload.js"),
     },
@@ -22,7 +22,7 @@ app.on("ready", () => {
   ipcMain.handle(
     "scraping-channel",
     async (_event, { keyword, maxCount }: ScrapingArgs) =>
-      await scraping({ keyword, maxCount }),
+      await scraping({ keyword, maxCount })
   );
 
   createWindow();

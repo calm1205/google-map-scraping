@@ -1,6 +1,6 @@
 import { ElementHandle, Page } from "puppeteer";
-import { focusFirstResult } from "./focusFirstResult.js";
-import { keyDown, sleep } from "@/main/libs/index.js";
+import { focusResult } from "./focusResult.js";
+import { sleep } from "@/main/libs/index.js";
 import { getTargetInfo } from "./getTargetInfo.js";
 import { mainWindow } from "@/main/main.js";
 import { getNextResult } from "./getNextResult.js";
@@ -16,35 +16,36 @@ export const getSearchResult = async (
   const searchResultWrapper = await page.$(
     `[aria-label='「${keyword}」の検索結果']`
   );
+  const searchResult = await searchResultWrapper?.$(".Nv2PK");
 
-  const searchResultSelector = ".Nv2PK.THOPZb.CpccDe";
-  const searchResult = await searchResultWrapper?.$(searchResultSelector);
-
-  await focusFirstResult(searchResult);
-
+  let count = 0;
+  let nextResult: ElementHandle<Element> | null =
+    searchResult as ElementHandle<Element>;
   const companyInfoArray = [];
   console.log("> 検索結果を取得中...");
 
-  let count = 0;
   while (count < maxCount) {
+    await focusResult({ page, nextResult });
     const companyInfo = await getTargetInfo(page);
-    companyInfoArray.push(companyInfo);
 
     // レンダラー側へ結果を送信
     mainWindow?.webContents.send("sendResult", companyInfo);
+    companyInfoArray.push(companyInfo);
 
     await sleep(1000);
-    const nextResult = await getNextResult(page, searchResult);
-    await keyDown(page, "ArrowDown");
-    await keyDown(page, "ArrowDown");
-    await keyDown(page, "ArrowDown");
-    await (nextResult as ElementHandle<Element>).click();
-    await (nextResult as ElementHandle<Element>).click();
-    await sleep(1000);
+    nextResult = await getNextResult({ page, target: nextResult });
+
+    // 次の検索結果がない場合は終了
+    if (!nextResult) break;
 
     count++;
-    const endOfList = await page.$(".HlvSq");
-    if (endOfList) break;
+    // const endOfList = await page.$(".HlvSq");
+    // console.log(endOfList);
+    // if (endOfList) {
+    //   await sleep(100000);
+    //   console.log("> 検索結果の最後に到達しました");
+    //   break;
+    // }
   }
 
   return companyInfoArray;
