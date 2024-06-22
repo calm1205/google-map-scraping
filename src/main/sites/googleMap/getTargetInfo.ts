@@ -27,11 +27,8 @@ export const getTargetInfo = async (page: Page): Promise<CsvObject> => {
     if (ariaLabel?.includes("電話番号")) phoneNumber = innerText;
     if (ariaLabel?.includes("ウェブサイト")) webSite = innerText;
   }
+  const result = { name, address, phoneNumber, webSite };
 
-  return {
-    name,
-    address,
-    phoneNumber,
-    webSite,
-  };
+  console.log("> 検索結果を送信", result);
+  return result;
 };

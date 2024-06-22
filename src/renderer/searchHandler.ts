@@ -54,7 +54,7 @@ export const searchHandler: SearchHandler = {
       this._resetResults();
       this._toSearchingStatus();
 
-      const maxCount = Number(this.dom.maxCount?.value ?? 10);
+      const maxCount = Number(this.dom.maxCount?.value);
 
       try {
         const companyInfo = await (window as any).electronAPI.scraping({
