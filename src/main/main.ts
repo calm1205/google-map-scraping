@@ -7,8 +7,8 @@ export let mainWindow: BrowserWindow | null = null;
 
 const createWindow = () => {
   mainWindow = new BrowserWindow({
-    width: 1920,
-    height: 1080,
+    width: 800,
+    height: 600,
     webPreferences: {
       preload: path.join(getRootPath(), "main", "preload.js"),
     },

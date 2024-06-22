@@ -32,7 +32,6 @@
           <input
             id="search-input"
             type="text"
-            value="企業"
             placeholder="検索したいキーワードを入力..."
             class="text-gray-600 w-full text-sm border-0 border-b border-gray-200 px-2 py-1 outline-0 focus:border-sky-400 hover:border-sky-400"
           />
@@ -56,9 +55,9 @@
           <p>1秒間に1件取得できるパフォーマンスを想定しています。</p>
           <p>処理中にウィンドウを閉じた場合は検索結果は破棄されます。</p>
           <br />
-          <p>最大検索件数は検証用です。</p>
+          <p>上限数は検証用です。</p>
           <p>検索を開始すると検索が終了するまで結果を出力できません。</p>
-          <p>最大検索件数を調整することで手早く結果を確認するためにあります</p>
+          <p>上限数を調整することで手早く結果を確認するためにあります</p>
         </details>
       </section>
 
@@ -69,7 +68,7 @@
             <span> <span class="w-12" id="result-count">0</span>件 </span>
           </p>
           <p class="flex justify-end">
-            <span class="w-24"> 最大検索件数: </span>
+            <span class="w-24"> 上限数: </span>
             <input
               id="max-count"
               value="3"
@@ -80,7 +79,7 @@
         </div>
       </div>
 
-      <section class="w-full h-56 mt-2 relative">
+      <section class="w-full h-60 mt-2 relative">
         <div id="loader" class="loader-wrapper">
           <span class="loader"></span>
         </div>
