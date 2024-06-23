@@ -1,3 +1,5 @@
+import { encodingUtf16 } from "./encodingUtf16.js";
+
 type Args = {
   content: string;
   filename: string;
@@ -7,7 +9,7 @@ type Args = {
  * client側でファイルをダウンロードする
  */
 export const fileDownload = ({ content, filename }: Args) => {
-  const blob = new Blob([content], { type: "text/plain" });
+  const blob = encodingUtf16(content);
   const url = URL.createObjectURL(blob);
 
   const a = document.createElement("a");
