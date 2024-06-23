@@ -24,22 +24,27 @@ export const getSearchResult = async (
   const companyInfoArray = [];
   console.log("> 検索結果を取得中...");
 
-  while (count < maxCount) {
-    await focusResult({ page, nextResult });
-    const companyInfo = await getTargetInfo(page);
+  try {
+    while (count < maxCount) {
+      await focusResult({ page, nextResult });
+      const companyInfo = await getTargetInfo(page);
 
-    // レンダラー側へ結果を送信
-    mainWindow?.webContents.send("sendResult", companyInfo);
-    companyInfoArray.push(companyInfo);
+      // レンダラー側へ結果を送信
+      mainWindow?.webContents.send("sendResult", companyInfo);
+      companyInfoArray.push(companyInfo);
 
-    await sleep(1000);
-    nextResult = await getNextResult({ page, target: nextResult });
+      await sleep(1000);
+      nextResult = await getNextResult({ page, target: nextResult });
 
-    // 次の検索結果がない場合は終了
-    if (!nextResult) break;
+      // 次の検索結果がない場合は終了
+      if (!nextResult) break;
 
-    count++;
+      count++;
+    }
+  } catch (error) {
+    console.error(error);
+  } finally {
+    console.log("> 検索結果を取得完了");
+    return companyInfoArray;
   }
-
-  return companyInfoArray;
 };
