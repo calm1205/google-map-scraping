@@ -18,8 +18,8 @@ export type SearchHandler = {
     searchResults: HTMLUListElement | null;
   };
   init: () => void;
-  startSearch: () => void;
-  stopSearch: () => void;
+  setStartSearch: () => void;
+  setStopSearch: () => void;
   _toSearchingStatus: () => void;
   _toSearchedStatus: () => void;
   _resetResults: () => void;

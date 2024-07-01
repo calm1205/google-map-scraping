@@ -1,5 +1,5 @@
 import * as os from "node:os";
-import { permittedMacAddresses } from "./permittedMacAddresses";
+import { permittedMacAddresses } from "./permittedMacAddresses.js";
 
 /**
  * 利用できるかどうかをMacAddressで判定

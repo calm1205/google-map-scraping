@@ -25,6 +25,12 @@ export const searchHandler: SearchHandler = {
    * 初期化
    */
   init() {
+    // const isPermitted = (window as any).electronAPI.isPermitted();
+    // if (!isPermitted) {
+    //   console.error("許可されていません");
+    //   return;
+    // }
+
     this.dom.input = document.querySelector("#search-input");
     this.dom.searchButton = document.querySelector("#search-button");
     this.dom.stopButton = document.querySelector("#stop-button");
@@ -39,15 +45,15 @@ export const searchHandler: SearchHandler = {
       this.updateResults(companyInfo);
     });
 
-    this.startSearch();
-    this.stopSearch();
+    this.setStartSearch();
+    this.setStopSearch();
     this.export();
   },
 
   /**
    * 検索時の処理
    */
-  startSearch() {
+  setStartSearch() {
     this.dom.searchButton?.addEventListener("click", async () => {
       this.inputWord = this.dom.input?.value ?? "";
 
@@ -118,7 +124,7 @@ export const searchHandler: SearchHandler = {
     if (this.dom.exportButton) this.dom.exportButton.style.display = "none";
   },
 
-  stopSearch() {
+  setStopSearch() {
     this.dom.stopButton?.addEventListener("click", () => {
       this._toSearchedStatus();
     });

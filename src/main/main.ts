@@ -2,6 +2,7 @@ import { app, BrowserWindow, ipcMain } from "electron";
 import * as path from "node:path";
 import { scraping, ScrapingArgs } from "./sites/googleMap/index.js";
 import { getRootPath } from "./libs/getRootPath.js";
+import { isPermitted } from "./authorization/isPermitted.js";
 
 export let mainWindow: BrowserWindow | null = null;
 
@@ -24,6 +25,7 @@ app.on("ready", () => {
     async (_event, { keyword, maxCount }: ScrapingArgs) =>
       await scraping({ keyword, maxCount })
   );
+  // ipcMain.handle("isPermitted-channel", async (_event) => await isPermitted());
 
   createWindow();
 });

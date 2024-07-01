@@ -4,7 +4,7 @@
   "productName": "web-scraping",
   "description": "web scraping with electron",
   "type": "module",
-  "main": "dist/main/main.js",
+  "main": "main/main.js",
   "author": "calm1205",
   "scripts": {
     "transpile": "tsc && tsc-alias",
@@ -13,7 +13,7 @@
     "build": "npm run transpile && ./scripts/copy-file.sh && ./scripts/for-macArm64.sh && tailwindcss -i src/input.css -o dist/output.css",
     "build:win": "npm run transpile && ./scripts/copy-file.sh && ./scripts/for-win64.sh && tailwindcss -i src/input.css -o dist/output.css",
     "build:sync": "concurrently 'tsc -w' 'npm run view:sync' 'npm run tailwind'",
-    "start": "./scripts/update-html-path.sh && electron .",
+    "start": "electron ./dist",
     "package": "npm run build && tsx packager/macArm64.ts",
     "package:win": "npm run build:win && tsx packager/win64.ts"
   },
