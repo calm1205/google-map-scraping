@@ -57,6 +57,7 @@ export const searchHandler: SearchHandler = {
     if (isPermitted) {
       console.log("許可されています");
       this.dom.main?.classList.remove("hidden");
+      this.dom.main?.classList.add("flex");
       this.dom.isAvailable?.classList.add("hidden");
     } else {
       console.error("許可されていません");
