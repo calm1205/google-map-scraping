@@ -25,7 +25,7 @@ app.on("ready", () => {
     async (_event, { keyword, maxCount }: ScrapingArgs) =>
       await scraping({ keyword, maxCount })
   );
-  // ipcMain.handle("isPermitted-channel", async (_event) => await isPermitted());
+  ipcMain.handle("isPermitted-channel", (_event) => isPermitted());
 
   createWindow();
 });

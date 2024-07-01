@@ -11,6 +11,8 @@ export const searchHandler: SearchHandler = {
   results: [],
   resultCount: 0,
   dom: {
+    main: null,
+    isAvailable: null,
     input: null,
     searchButton: null,
     stopButton: null,
@@ -24,12 +26,8 @@ export const searchHandler: SearchHandler = {
   /**
    * 初期化
    */
-  init() {
-    // const isPermitted = (window as any).electronAPI.isPermitted();
-    // if (!isPermitted) {
-    //   console.error("許可されていません");
-    //   return;
-    // }
+  async init() {
+    await this.isAvailable();
 
     this.dom.input = document.querySelector("#search-input");
     this.dom.searchButton = document.querySelector("#search-button");
@@ -48,6 +46,22 @@ export const searchHandler: SearchHandler = {
     this.setStartSearch();
     this.setStopSearch();
     this.export();
+  },
+
+  /** 利用権限があるか確認 */
+  async isAvailable() {
+    this.dom.main = document.querySelector("#main");
+    this.dom.isAvailable = document.querySelector("#isAvailable");
+
+    const isPermitted = await (window as any).electronAPI.isPermitted();
+    if (isPermitted) {
+      console.log("許可されています");
+      this.dom.main?.classList.remove("hidden");
+      this.dom.isAvailable?.classList.add("hidden");
+    } else {
+      console.error("許可されていません");
+      return;
+    }
   },
 
   /**

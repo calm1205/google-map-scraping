@@ -8,6 +8,8 @@ export type SearchHandler = {
   results: CsvObject[];
   resultCount: number;
   dom: {
+    main: HTMLElement | null;
+    isAvailable: HTMLElement | null;
     input: HTMLInputElement | null;
     searchButton: HTMLButtonElement | null;
     stopButton: HTMLButtonElement | null;
@@ -18,6 +20,7 @@ export type SearchHandler = {
     searchResults: HTMLUListElement | null;
   };
   init: () => void;
+  isAvailable: () => void;
   setStartSearch: () => void;
   setStopSearch: () => void;
   _toSearchingStatus: () => void;

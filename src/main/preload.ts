@@ -9,7 +9,7 @@ contextBridge.exposeInMainWorld("electronAPI", {
   scraping: ({ keyword, maxCount }: any) =>
     ipcRenderer.invoke("scraping-channel", { keyword, maxCount }),
 
-  // isPermitted: () => ipcRenderer.invoke("isPermitted-channel"),
+  isPermitted: () => ipcRenderer.invoke("isPermitted-channel"),
 
   sendResult: (callback: any) =>
     ipcRenderer.on("sendResult", (_event, value) => callback(value)),
