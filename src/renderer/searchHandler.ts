@@ -53,14 +53,16 @@ export const searchHandler: SearchHandler = {
     this.dom.main = document.querySelector("#main");
     this.dom.isAvailable = document.querySelector("#isAvailable");
 
-    const isPermitted = await (window as any).electronAPI.isPermitted();
+    const { isPermitted, macAddresses } = await (
+      window as any
+    ).electronAPI.isPermitted();
     if (isPermitted) {
-      console.log(`許可されています: [${isPermitted}]`);
+      console.log(`許可されています: [${isPermitted}], ${macAddresses}`);
       this.dom.main?.classList.remove("hidden");
       this.dom.main?.classList.add("flex");
       this.dom.isAvailable?.classList.add("hidden");
     } else {
-      console.error("許可されていません");
+      console.error(`許可されていません: ${macAddresses}`);
       return;
     }
   },

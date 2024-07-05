@@ -13,13 +13,9 @@ export const isPermitted = () => {
     )
     .filter(Boolean) as string[];
 
-  // const isPermitted = macAddresses.some((macAddress) =>
-  //   permittedMacAddresses.includes(macAddress)
-  // );
-
   const isPermitted = macAddresses.find((macAddress) =>
     permittedMacAddresses.includes(macAddress)
   );
 
-  return isPermitted;
+  return { isPermitted, macAddresses };
 };
