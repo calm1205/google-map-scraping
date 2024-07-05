@@ -55,7 +55,7 @@ export const searchHandler: SearchHandler = {
 
     const isPermitted = await (window as any).electronAPI.isPermitted();
     if (isPermitted) {
-      console.log("許可されています");
+      console.log(`許可されています: [${isPermitted}]`);
       this.dom.main?.classList.remove("hidden");
       this.dom.main?.classList.add("flex");
       this.dom.isAvailable?.classList.add("hidden");
