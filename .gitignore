@@ -14,4 +14,4 @@ out/
 packed
 
 # google chrome のバイナリファイル
-chrome-*
+chromeBinaries/*
