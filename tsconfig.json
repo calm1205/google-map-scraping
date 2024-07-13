@@ -14,5 +14,5 @@
     "outDir": "./dist"
   },
   "include": ["**/*.ts", "src/main/preload.ts"],
-  "exclude": ["node_modules", "packager", "packed"]
+  "exclude": ["node_modules", "electronPackagerConfig", "packed"]
 }
