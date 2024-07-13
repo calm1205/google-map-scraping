@@ -1,4 +1,4 @@
-import { CsvObject } from "@/renderer/libs/exportCsv";
+import { CsvObject } from "@/renderer/libs/exportCsv/exportCsv.js";
 import { Page } from "puppeteer";
 
 /**
