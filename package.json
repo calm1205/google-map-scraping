@@ -12,7 +12,7 @@
     "tailwind": "tailwindcss -i src/input.css -o dist/output.css --watch",
     "build": "npm run transpile && ./scripts/copy-file.sh && ./scripts/for-macArm64.sh && tailwindcss -i src/input.css -o dist/output.css",
     "build:win": "npm run transpile && ./scripts/copy-file.sh && ./scripts/for-win64.sh && tailwindcss -i src/input.css -o dist/output.css",
-    "build:sync": "concurrently 'tsc -w' 'npm run view:sync' 'npm run tailwind'",
+    "build:sync": "concurrently 'npm run transpile' 'npm run view:sync' 'npm run tailwind'",
     "start": "electron ./dist",
     "package": "npm run build && tsx electronPackagerConfig/macArm64.ts && zip -r web-scraping.zip packed/web-scraping-darwin-arm64",
     "package:win": "npm run build:win && tsx electronPackagerConfig/win64.ts && zip -r web-scraping.zip packed/web-scraping-win32-x64"

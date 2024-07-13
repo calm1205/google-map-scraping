@@ -20,20 +20,13 @@
   </head>
 
   <body>
-    <header class="p-4">
-      <h1 class="text-2xl font-semibold">Web Scraping</h1>
-    </header>
-
-    <div class="h-16"></div>
-
-    <h2 id="isAvailable" class="w-full text-center">
-      このPCでは利用が許可されていません
-    </h2>
-
     <main
       id="main"
-      class="flex-col w-3/4 max-w-xl mx-auto items-center gap-4 hidden"
+      class="flex-col w-3/4 max-w-xl mx-auto items-center py-16 gap-4 hidden"
     >
+      <h2 id="isAvailable" class="w-full text-center">
+        このPCでは利用が許可されていません
+      </h2>
       <section class="w-full flex flex-col justify-center gap-4">
         <div class="flex items-center gap-4">
           <input
@@ -61,10 +54,6 @@
           <br />
           <p>1秒間に1件取得できるパフォーマンスを想定しています。</p>
           <p>処理中にウィンドウを閉じた場合は検索結果は破棄されます。</p>
-          <br />
-          <p>上限数は検証用です。</p>
-          <p>検索を開始すると検索が終了するまで結果を出力できません。</p>
-          <p>上限数を調整することで手早く結果を確認するためにあります</p>
         </details>
       </section>
 
