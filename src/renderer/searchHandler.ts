@@ -1,5 +1,6 @@
-import { CsvObject, exportCsv } from "./libs/exportCsv.js";
+import { CsvObject, exportCsv } from "./libs/exportCsv/exportCsv.js";
 import { SearchHandler } from "./searchHandler.type";
+import { isServiceAvailable } from "./libs/isServiceAvailable.js";
 
 /**
  * 検索時の処理
@@ -11,8 +12,6 @@ export const searchHandler: SearchHandler = {
   results: [],
   resultCount: 0,
   dom: {
-    main: null,
-    isAvailable: null,
     input: null,
     searchButton: null,
     stopButton: null,
@@ -27,7 +26,9 @@ export const searchHandler: SearchHandler = {
    * 初期化
    */
   async init() {
-    await this.isAvailable();
+    const mainDom = document.querySelector("#main");
+    const isAvailableDom = document.querySelector("#isAvailable");
+    await isServiceAvailable({ mainDom, isAvailableDom });
 
     this.dom.input = document.querySelector("#search-input");
     this.dom.searchButton = document.querySelector("#search-button");
@@ -46,25 +47,6 @@ export const searchHandler: SearchHandler = {
     this.setStartSearch();
     this.setStopSearch();
     this.export();
-  },
-
-  /** 利用権限があるか確認 */
-  async isAvailable() {
-    this.dom.main = document.querySelector("#main");
-    this.dom.isAvailable = document.querySelector("#isAvailable");
-
-    const { isPermitted, macAddresses } = await (
-      window as any
-    ).electronAPI.isPermitted();
-    if (isPermitted) {
-      console.log(`許可されています: [${isPermitted}], ${macAddresses}`);
-      this.dom.main?.classList.remove("hidden");
-      this.dom.main?.classList.add("flex");
-      this.dom.isAvailable?.classList.add("hidden");
-    } else {
-      console.error(`許可されていません: ${macAddresses}`);
-      return;
-    }
   },
 
   /**
