@@ -146,7 +146,6 @@ export const searchHandler: SearchHandler = {
   updateResults(companyInfo: CsvObject) {
     if (this.dom.searchResults === null) return;
 
-    console.log("updateResults", companyInfo);
     const htmlText = `
             <p class="w-8">${this.resultCount}.</p>
             <div>
