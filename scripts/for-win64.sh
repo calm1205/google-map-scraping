@@ -1,6 +1,6 @@
 # chromeのバイナリファイルをコピー
 if [ ! -e dist/chrome-win64 ]; then
-  cp -ri chromeBinaries/chrome-win64 dist/chrome-win64
+  cp -iRa chromeBinaries/chrome-win64 dist/chrome-win64
 fi
 
 # puppeteerの参照先のchromeのバイナリファイルをwin64用に変更する

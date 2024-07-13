@@ -1,6 +1,6 @@
 # chromeのバイナリファイルをコピー
 if [ ! -e dist/chrome-mac-arm64 ]; then
-  cp -ri chromeBinaries/chrome-mac-arm64 dist/chrome-mac-arm64
+  cp -iRa chromeBinaries/chrome-mac-arm64 dist/chrome-mac-arm64
 fi
 
 # puppeteerの参照先のchromeのバイナリファイルをmacArm64用に変更する
