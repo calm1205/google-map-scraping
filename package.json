@@ -13,8 +13,8 @@
     "build:mac": "./scripts/new-build.sh && ./scripts/for-macArm64.sh",
     "build:win": "./scripts/new-build.sh && ./scripts/for-win64.sh",
     "start": "electron ./dist",
-    "package": "npm run build:mac && tsx electronPackager/macArm64.ts",
-    "package:win": "npm run build:win && tsx electronPackager/win64.ts",
+    "package:mac": "tsx electronPackager/macArm64.ts",
+    "package:win": "tsx electronPackager/win64.ts",
     "zip": "node ./scripts/zip.cjs"
   },
   "dependencies": {
