@@ -10,6 +10,6 @@ zip(
       console.error(err);
       process.exit(1);
     }
-    console.log("Zip file written to: ", res);
+    console.log("zip complete!");
   }
 );

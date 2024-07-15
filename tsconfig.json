@@ -13,12 +13,13 @@
     },
     "outDir": "./dist"
   },
-  "include": ["**/*.ts", "src/main/preload.ts"],
+  "include": ["**/*.ts", "**/*.vue"],
   "exclude": [
     "node_modules",
     "electronPackager",
     "packed",
     "dist",
-    "chromeBinaries"
+    "vite.config.ts",
+    "src/renderer/index.ts"
   ]
 }

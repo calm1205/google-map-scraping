@@ -1,1 +1,0 @@
-fswatch -o index.html | while read; do rsync -avz index.html dist/index.html; done
