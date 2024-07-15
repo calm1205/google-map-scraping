@@ -19,7 +19,7 @@ onMounted(() => {
       <span class="loader"></span>
     </div>
 
-    <ul class="flex flex-col h-56 overflow-hidden overflow-y-scroll gap-4 mt-2">
+    <ul class="flex flex-col h-80 overflow-hidden overflow-y-scroll gap-4 mt-2">
       <li v-for="(result, index) in searchResults" class="flex">
         <p class="w-8">{{ index + 1 }}.</p>
         <div>
