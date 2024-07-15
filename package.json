@@ -9,21 +9,25 @@
   "scripts": {
     "transpile": "tsc && tsc-alias",
     "view:sync": "./scripts/copy-file.sh && ./scripts/sync-index-html.sh",
-    "tailwind": "tailwindcss -i src/input.css -o dist/output.css --watch",
+    "tailwind": "tailwindcss -i src/renderer/style/input.css -o src/renderer/style/output.css",
     "build": "npm run transpile && ./scripts/copy-file.sh && ./scripts/for-macArm64.sh && tailwindcss -i src/input.css -o dist/output.css",
     "build:win": "npm run transpile && ./scripts/copy-file.sh && ./scripts/for-win64.sh && tailwindcss -i src/input.css -o dist/output.css",
     "build:sync": "concurrently 'npm run transpile' 'npm run view:sync' 'npm run tailwind'",
     "start": "electron ./dist",
     "package": "npm run build && tsx electronPackager/macArm64.ts",
     "package:win": "npm run build:win && tsx electronPackager/win64.ts",
-    "zip": "node ./scripts/zip.cjs"
+    "zip": "node ./scripts/zip.cjs",
+    "build:vite": "vue-tsc -b && vite build"
   },
   "dependencies": {
-    "puppeteer": "^22.11.0"
+    "pinia": "^2.1.7",
+    "puppeteer": "^22.11.0",
+    "vue": "^3.4.31"
   },
   "devDependencies": {
     "@electron/packager": "^18.3.2",
     "@types/node": "^20.13.0",
+    "@vitejs/plugin-vue": "^5.0.5",
     "concurrently": "^8.2.2",
     "electron": "^30.1.0",
     "electron-installer-zip": "^0.1.2",
@@ -31,6 +35,8 @@
     "tailwindcss": "^3.4.4",
     "tsc-alias": "^1.8.10",
     "tsx": "^4.11.0",
-    "typescript": "^5.4.5"
+    "typescript": "^5.4.5",
+    "vite": "^5.3.3",
+    "vue-tsc": "^2.0.26"
   }
 }

@@ -15,104 +15,11 @@
       rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200"
     />
-    <link href="./output.css" rel="stylesheet" />
-    <script src="./renderer/index.js" type="module"></script>
+    <link href="./src/renderer/style/output.css" rel="stylesheet" />
   </head>
 
   <body>
-    <main
-      id="main"
-      class="flex-col w-3/4 max-w-xl mx-auto items-center py-16 gap-4 hidden"
-    >
-      <h2 id="isAvailable" class="w-full text-center">
-        このPCでは利用が許可されていません
-      </h2>
-      <section class="w-full flex flex-col justify-center gap-4">
-        <div class="flex items-center gap-4">
-          <input
-            id="search-input"
-            type="text"
-            placeholder="検索したいキーワードを入力..."
-            class="text-gray-600 w-full text-sm border-0 border-b border-gray-200 px-2 py-1 outline-0 focus:border-sky-400 hover:border-sky-400"
-          />
-
-          <button
-            id="search-button"
-            class="flex items-center gap-1 bg-slate-800 text-white px-4 py-2 rounded-full"
-          >
-            <span class="material-symbols-outlined text-lg leading-none">
-              search
-            </span>
-            <span class="text-sm"> Search </span>
-          </button>
-        </div>
-
-        <details class="text-xs">
-          <summary>Hint</summary>
-          <p>「地域x 業種y 企業」のような検索キーワードがおすすめです。</p>
-          <p>例: 「東京都 飲食店 企業」</p>
-          <br />
-          <p>1秒間に1件取得できるパフォーマンスを想定しています。</p>
-          <p>処理中にウィンドウを閉じた場合は検索結果は破棄されます。</p>
-        </details>
-      </section>
-
-      <div class="w-full flex justify-end mt-8">
-        <div class="text-sm">
-          <p class="flex justify-between w-28">
-            <span class="w-16 text-right"> 検索結果: </span>
-            <span> <span class="w-12" id="result-count">0</span>件 </span>
-          </p>
-          <p class="flex justify-between w-28">
-            <span class="w-16 text-right"> 上限数: </span>
-            <input
-              id="max-count"
-              value="3"
-              class="w-12 text-right border-0 border-b border-gray-200 outline-0 focus:border-sky-400 hover:border-sky-400"
-              type="number"
-            />
-          </p>
-        </div>
-      </div>
-
-      <section class="w-full h-56 mt-2 relative">
-        <div id="loader" class="loader-wrapper">
-          <span class="loader"></span>
-        </div>
-
-        <ul
-          id="search-results"
-          class="flex flex-col h-56 overflow-hidden overflow-y-scroll gap-4 mt-2"
-        >
-          <!-- 
-          <li class="flex">
-            <p class="w-8">1.</p>
-            <div>
-              <p class="font-bold">東京タワー</p>
-              <p class="text-gray-400 text-sm">東京都港区芝公園4丁目2-8</p>
-              <p class="text-gray-400 text-sm">09012341234</p>
-            </div>
-          </li>
-          -->
-        </ul>
-      </section>
-
-      <div class="flex gap-4">
-        <button
-          id="stop-button"
-          class="rounded-full border border-slate-800 px-4 hidden"
-        >
-          Stop
-        </button>
-        <button
-          id="export-button"
-          class="rounded-full text-white w-full bg-slate-800 px-4 hidden"
-        >
-          Export
-        </button>
-      </div>
-
-      <div id="app"></div>
-    </main>
+    <div id="app"></div>
+    <script src="./src/renderer/index.ts" type="module"></script>
   </body>
 </html>

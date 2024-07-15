@@ -1,6 +1,7 @@
-import { searchHandler } from "./searchHandler.js";
+import { createApp } from "vue";
+import { createPinia } from "pinia";
 
-document.addEventListener("DOMContentLoaded", () => {
-  console.log("start renderer!");
-  searchHandler.init();
-});
+import App from "./App.vue";
+
+const pinia = createPinia();
+createApp(App).use(pinia).mount("#app");
