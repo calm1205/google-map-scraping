@@ -761,10 +761,6 @@ html {
   color: var(--color-primary);
 }
 
-#search-button:disabled {
-  background-color: #ccc;
-}
-
 /* ====== loader ====== */
 
 .loader-wrapper {
@@ -864,4 +860,9 @@ html {
 .focus\:border-sky-400:focus {
   --tw-border-opacity: 1;
   border-color: rgb(56 189 248 / var(--tw-border-opacity));
+}
+
+.disabled\:bg-gray-400:disabled {
+  --tw-bg-opacity: 1;
+  background-color: rgb(156 163 175 / var(--tw-bg-opacity));
 }

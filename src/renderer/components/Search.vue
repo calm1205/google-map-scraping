@@ -21,8 +21,8 @@ const handleOnSearch = () => {
     />
 
     <button
-      class="flex items-center gap-1 bg-slate-800 text-white px-4 py-2 rounded-full"
-      :disabled="status === 'searching'"
+      class="flex items-center gap-1 bg-slate-800 text-white px-4 py-2 rounded-full disabled:bg-gray-400"
+      :disabled="status === 'searching' || inputValue === ''"
       @click="handleOnSearch"
     >
       <span class="material-symbols-outlined text-lg leading-none">

@@ -10,10 +10,6 @@ html {
   color: var(--color-primary);
 }
 
-#search-button:disabled {
-  background-color: #ccc;
-}
-
 /* ====== loader ====== */
 .loader-wrapper {
   /* display: flex; */
