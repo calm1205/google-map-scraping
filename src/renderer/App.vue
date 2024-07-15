@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import Search from "./components/Search.vue";
+import SearchForm from "./components/SearchForm.vue";
 import Hint from "./components/Hint.vue";
 import InAvailable from "./components/InAvailable.vue";
-import SearchConfig from "./components/SearchConfig.vue";
+import ResultCount from "./components/ResultCount.vue";
 import SearchResult from "./components/SearchResult.vue";
 import Buttons from "./components/Buttons.vue";
 import { useServiceAvailableStore } from "./stores/serviceAvailable";
@@ -22,9 +22,9 @@ onMounted(() => {
   >
     <InAvailable v-if="!isAvailable" />
     <section v-else class="w-full flex flex-col justify-center gap-4">
-      <Search />
+      <SearchForm />
       <Hint />
-      <SearchConfig />
+      <ResultCount />
       <SearchResult />
       <Buttons />
     </section>
