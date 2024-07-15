@@ -1,5 +1,5 @@
 npm run tailwind
-npm run build:vite
+npm run build
 npm run transpile
 rm -rf dist/renderer
 cp package.json dist/package.json

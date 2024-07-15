@@ -1,9 +1,9 @@
 # chromeのバイナリファイルをコピー
-if [ ! -e dist/chrome-win64 ]; then
-  cp -iRa chromeBinaries/chrome-win64 dist/chrome-win64
-fi
+cp -iRa chromeBinaries/chrome-win64 dist/chrome-binary
+
+chrome_path="chrome-binary/chrome.exe"
 
 # puppeteerの参照先のchromeのバイナリファイルをwin64用に変更する
-sed -i "" "s/executablePath: .*$/executablePath: path.join\(getRootPath\(\), CHROME_PATH.win64\),/g" dist/main/sites/googleMap/index.js
+sed -i "" "s/CHROME_PATH/$chrome_path/g" dist/main/sites/googleMap/index.js
 
 echo "> Copied chrome-win64 to dist/ directory."

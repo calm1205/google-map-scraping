@@ -7,12 +7,6 @@ import { getRootPath } from "@/main/libs/getRootPath.js";
 
 const URL = "https://www.google.com/maps/";
 
-/** chromeのバイナリファイルのパス */
-const CHROME_PATH = {
-  macArm64: `chrome-mac-arm64/Google Chrome for Testing.app/Contents/MacOS/Google Chrome for Testing`,
-  win64: `chrome-win64/chrome.exe`,
-};
-
 export type ScrapingArgs = {
   keyword: string;
   maxCount?: number;
@@ -27,7 +21,11 @@ export const scraping = async ({ keyword, maxCount = 3 }: ScrapingArgs) => {
   const browser = await puppeteer.launch({
     headless: false,
     dumpio: true,
-    executablePath: path.join(getRootPath(), CHROME_PATH.macArm64),
+    /**
+     * CHROME_PATHはchromeのバイナリファイルのパス
+     * scripts/for-xxx.shで置換される
+     */
+    executablePath: path.join(getRootPath(), "CHROME_PATH"),
     args: ["--window-size=1980,1080"],
   });
 
