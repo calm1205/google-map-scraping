@@ -24,9 +24,9 @@ onMounted(() => {
     <section v-else class="w-full flex flex-col justify-center gap-4">
       <SearchForm />
       <Hint />
+      <Buttons />
       <ResultCount />
       <SearchResult />
-      <Buttons />
     </section>
   </main>
 </template>

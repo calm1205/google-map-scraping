@@ -16,7 +16,7 @@ const handleOnExport = () => {
   <div class="flex gap-4">
     <button
       v-if="status === 'searching'"
-      class="rounded-full border border-slate-800 px-4"
+      class="rounded-full text-white bg-slate-800 px-4"
       @click="store.stopSearching"
     >
       Stop
@@ -24,10 +24,10 @@ const handleOnExport = () => {
 
     <button
       v-if="status === 'searched' && results.length > 0"
-      class="rounded-full text-white w-full bg-slate-800 px-4"
+      class="rounded-full text-white bg-slate-800 px-4"
       @click="handleOnExport"
     >
-      Export
+      Export CSV
     </button>
   </div>
 </template>
