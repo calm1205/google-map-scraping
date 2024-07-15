@@ -27,7 +27,6 @@ export const useSearchStore = defineStore("search", {
       try {
         const companyInfo = await (window as any).electronAPI.scraping({
           keyword,
-          maxCount: 10,
         });
         this.results = companyInfo;
       } catch (error) {

@@ -17,9 +17,9 @@ export type ScrapingArgs = {
  * @param keyword 検索キーワード
  * @param maxCount 取得する最大件数
  * */
-export const scraping = async ({ keyword, maxCount = 3 }: ScrapingArgs) => {
+export const scraping = async ({ keyword, maxCount = 9999 }: ScrapingArgs) => {
   const browser = await puppeteer.launch({
-    headless: false,
+    headless: true,
     dumpio: true,
     /**
      * CHROME_PATHはchromeのバイナリファイルのパス
