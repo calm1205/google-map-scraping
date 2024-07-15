@@ -12,8 +12,8 @@ const results = computed(() => store.getResults);
       <p class="flex justify-between w-28">
         <span class="w-16 text-right"> 検索結果: </span>
         <span>
-          <span class="w-12">{{ results.length }}</span
-          >件
+          <span class="w-12">{{ results.length }}</span>
+          件
         </span>
       </p>
     </div>

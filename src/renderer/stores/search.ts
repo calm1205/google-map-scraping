@@ -32,6 +32,8 @@ export const useSearchStore = defineStore("search", {
         this.results = companyInfo;
       } catch (error) {
         console.error(error);
+      } finally {
+        this.status = "searched";
       }
     },
     /**
