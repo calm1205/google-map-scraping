@@ -16,7 +16,7 @@
   "include": ["**/*.ts", "src/main/preload.ts"],
   "exclude": [
     "node_modules",
-    "electronPackagerConfig",
+    "electronPackager",
     "packed",
     "dist",
     "chromeBinaries"
