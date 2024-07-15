@@ -14,8 +14,9 @@
     "build:win": "npm run transpile && ./scripts/copy-file.sh && ./scripts/for-win64.sh && tailwindcss -i src/input.css -o dist/output.css",
     "build:sync": "concurrently 'npm run transpile' 'npm run view:sync' 'npm run tailwind'",
     "start": "electron ./dist",
-    "package": "npm run build && tsx electronPackager/macArm64.ts && zip -r web-scraping.zip packed/web-scraping-darwin-arm64/web-scraping.app",
-    "package:win": "npm run build:win && tsx electronPackager/win64.ts && zip -r web-scraping.zip packed/web-scraping-win32-x64"
+    "package": "npm run build && tsx electronPackager/macArm64.ts",
+    "package:win": "npm run build:win && tsx electronPackager/win64.ts",
+    "zip": "node ./scripts/zip.cjs"
   },
   "dependencies": {
     "puppeteer": "^22.11.0"
