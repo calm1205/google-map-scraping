@@ -8,6 +8,9 @@ export const useServiceAvailableStore = defineStore("serviceAvailable", {
     getIsAvailable: (state) => state.isAvailable,
   },
   actions: {
+    /**
+     * サービスの利用権限があるか確認
+     * */
     async checkServiceAvailable() {
       const { isPermitted, macAddresses } = await (
         window as any
