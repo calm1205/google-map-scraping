@@ -36,12 +36,25 @@ export const useSearchStore = defineStore("search", {
         this.status = "searched";
       }
     },
+
+    /**
+     * 検索の中断
+     */
+    async stopSearching() {
+      try {
+        await (window as any).electronAPI.stopScraping();
+      } catch (error) {
+        console.error(error);
+      }
+    },
+
     /**
      * 検索結果をリセット
      */
     resetResults() {
       this.results = [];
     },
+
     /**
      * 検索結果に随時追加
      */

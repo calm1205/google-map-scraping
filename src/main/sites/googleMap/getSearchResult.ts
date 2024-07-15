@@ -4,6 +4,7 @@ import { sleep } from "@/main/libs/index.js";
 import { getTargetInfo } from "./getTargetInfo.js";
 import { mainWindow } from "@/main/main.js";
 import { getNextResult } from "./getNextResult.js";
+import { searchStatus } from "./searchStatus.js";
 
 /**
  * keywordで検索した結果を取得
@@ -24,8 +25,10 @@ export const getSearchResult = async (
   const companyInfoArray = [];
   console.log("> 検索結果を取得中...");
 
+  searchStatus.startSearching();
+
   try {
-    while (count < maxCount) {
+    while (count < maxCount && searchStatus.isSearching) {
       await focusResult({ page, nextResult });
       const companyInfo = await getTargetInfo(page);
 
