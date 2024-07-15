@@ -9,8 +9,7 @@ google map のスクレイピング
 ## local development
 
 ```bash
-$ npm run build # distファイルにbuild出力
-$ cp chrome-mac-arm64 dist/ # chromeのバイナリをdistに複製
+$ npm run build:mac # distファイルにbuild出力
 $ npm run start # electronアプリ起動
 ```
 
@@ -19,13 +18,9 @@ $ npm run start # electronアプリ起動
 ## packaging
 
 ```bash
-$ npm run package
-# or
-$ npm run package:win
+$ npm run build:mac
+$ npm run package:mac
 ```
-
-distディレクトリ内にchromeのバイナリは入れないこと。
-chromeのバイナリは400MB以上あるため、パッケージング時には除外する。
 
 <br/><br/>
 
@@ -53,7 +48,6 @@ chromeのバイナリは400MB以上あるため、パッケージング時には
 ### 注意点
 
 puppeteerは起動するためにlocalにchromeのバイナリをインストールする必要がある。
-デフォルトではelectronのapp起動時にchromeが存在しない場合には自動でインストールされる。（が.puppeteer.rcで自動インストールをOFFにしている）
-（手動インストールの場合は`npx puppeteer browsers install chrome`）
+デフォルトではelectronのapp起動時にchromeが存在しない場合には自動でインストールされる。
 
-なのでローカルで開発する際にはhttps://googlechromelabs.github.io/chrome-for-testing/ からchromeのバイナリをダウンロードして、distディレクトリに配置する必要がある。
+ローカルで開発する際にはhttps://googlechromelabs.github.io/chrome-for-testing/ からchromeのバイナリをダウンロードして、chromeBinariesディレクトリに配置が必要
