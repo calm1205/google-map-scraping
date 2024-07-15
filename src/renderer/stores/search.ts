@@ -1,7 +1,7 @@
 import { defineStore } from "pinia";
 
 type Status = "beforeSearch" | "searching" | "searched";
-type CompanyInfo = {
+export type CompanyInfo = {
   name: string;
   address: string;
   phoneNumber: string;
@@ -18,6 +18,9 @@ export const useSearchStore = defineStore("search", {
     getResults: (state) => state.results,
   },
   actions: {
+    /**
+     * 企業の検索処理を開始
+     */
     async search(keyword: string) {
       this.status = "searching";
 
@@ -31,8 +34,17 @@ export const useSearchStore = defineStore("search", {
         console.error(error);
       }
     },
+    /**
+     * 検索結果をリセット
+     */
     resetResults() {
       this.results = [];
+    },
+    /**
+     * 検索結果に随時追加
+     */
+    appendResults(companyInfo: CompanyInfo) {
+      this.results.push(companyInfo);
     },
   },
 });

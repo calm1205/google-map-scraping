@@ -17,7 +17,9 @@ onMounted(() => {
 </script>
 
 <template>
-  <main class="flex-col w-3/4 max-w-xl max-h-screen mx-auto items-center gap-4">
+  <main
+    class="flex-col w-3/4 max-w-xl h-screen mx-auto items-center gap-4 py-[150px]"
+  >
     <InAvailable v-if="!isAvailable" />
     <section v-else class="w-full flex flex-col justify-center gap-4">
       <Search />

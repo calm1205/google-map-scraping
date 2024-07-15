@@ -1,10 +1,16 @@
 <script setup lang="ts">
-import { useSearchStore } from "@/renderer/stores/search";
-import { computed } from "vue";
+import { CompanyInfo, useSearchStore } from "@/renderer/stores/search";
+import { computed, onMounted } from "vue";
 
 const store = useSearchStore();
 const status = computed(() => store.getStatus);
 const searchResults = computed(() => store.getResults);
+
+onMounted(() => {
+  (window as any).electronAPI.sendResult((companyInfo: CompanyInfo) => {
+    store.appendResults(companyInfo);
+  });
+});
 </script>
 
 <template>
@@ -13,12 +19,9 @@ const searchResults = computed(() => store.getResults);
       <span class="loader"></span>
     </div>
 
-    <ul
-      id="search-results"
-      class="flex flex-col h-56 overflow-hidden overflow-y-scroll gap-4 mt-2"
-    >
-      <li v-for="result in searchResults" class="flex">
-        <p class="w-8">1.</p>
+    <ul class="flex flex-col h-56 overflow-hidden overflow-y-scroll gap-4 mt-2">
+      <li v-for="(result, index) in searchResults" class="flex">
+        <p class="w-8">{{ index + 1 }}.</p>
         <div>
           <p class="font-bold">
             {{ result.name }}
