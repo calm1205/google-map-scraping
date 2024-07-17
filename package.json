@@ -15,7 +15,8 @@
     "start": "electron ./dist",
     "package:mac": "tsx electronPackager/macArm64.ts",
     "package:win": "tsx electronPackager/win64.ts",
-    "zip": "node ./scripts/zip.cjs"
+    "zip:mac": "node ./scripts/zip.cjs",
+    "zip:win": "zip -r app-win.zip packed/web-scraping-win32-x64/"
   },
   "dependencies": {
     "pinia": "^2.1.7",
