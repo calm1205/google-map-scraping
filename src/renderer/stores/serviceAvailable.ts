@@ -12,9 +12,8 @@ export const useServiceAvailableStore = defineStore("serviceAvailable", {
      * サービスの利用権限があるか確認
      * */
     async checkServiceAvailable() {
-      const { isPermitted, macAddresses } = await (
-        window as any
-      ).electronAPI.isPermitted();
+      const { isPermitted, macAddresses } =
+        await window.electronAPI.isPermitted();
 
       if (isPermitted) {
         console.log(`許可されています: [${isPermitted}], ${macAddresses}`);

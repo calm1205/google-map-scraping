@@ -41,7 +41,7 @@ export const useSearchStore = defineStore("search", {
      */
     async stopSearching() {
       try {
-        await (window as any).electronAPI.stopScraping();
+        await window.electronAPI.stopScraping();
       } catch (error) {
         console.error(error);
       }

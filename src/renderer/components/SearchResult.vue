@@ -7,7 +7,7 @@ const status = computed(() => store.getStatus);
 const searchResults = computed(() => store.getResults);
 
 onMounted(() => {
-  (window as any).electronAPI.sendResult((companyInfo: CompanyInfo) => {
+  window.electronAPI.sendResult((companyInfo: CompanyInfo) => {
     store.appendResults(companyInfo);
   });
 });
