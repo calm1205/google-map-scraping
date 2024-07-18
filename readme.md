@@ -51,3 +51,8 @@ puppeteerは起動するためにlocalにchromeのバイナリをインストー
 デフォルトではelectronのapp起動時にchromeが存在しない場合には自動でインストールされる。
 
 ローカルで開発する際にはhttps://googlechromelabs.github.io/chrome-for-testing/ からchromeのバイナリをダウンロードして、chromeBinariesディレクトリに配置が必要
+
+```bash
+# macOSのgatekeeperすり抜け
+xattr -c ~/Downloads/app-mac/web-scraping.app
+```
