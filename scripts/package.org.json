@@ -1,0 +1,12 @@
+{
+  "name": "web-scraping",
+  "version": "1.0.0",
+  "productName": "web-scraping",
+  "description": "web scraping with electron",
+  "type": "module",
+  "main": "main/main.js",
+  "author": "calm1205",
+  "dependencies": {
+    "puppeteer": "^22.11.0"
+  }
+}
